@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm -v)",
+      "Bash(claude --version)",
+      "Bash(winget --version)",
+      "Bash(brew --version)",
+      "Bash(uv --version)",
+      "Bash(uvx --version)",
+      "Bash(command -v claude)",
+      "Bash(command -v winget)",
+      "Bash(command -v brew)",
+      "Bash(command -v uv)",
+      "Bash(command -v uvx)",
+      "Bash(winget install *)",
+      "Read(//c/Users/teknos/.local/**)",
+      "Read(//c/Users/teknos/AppData/Local/Microsoft/WinGet/Links//**)",
+      "Bash(powershell.exe *)",
+      "Bash(\"/c/Users/teknos/AppData/Local/Microsoft/WinGet/Packages/Gitleaks.Gitleaks_Microsoft.Winget.Source_8wekyb3d8bbwe/gitleaks.exe\" version *)",
+      "Bash(\"/c/Users/teknos/AppData/Local/Microsoft/WinGet/Packages/AquaSecurity.Trivy_Microsoft.Winget.Source_8wekyb3d8bbwe/trivy.exe\" --version)",
+      "Bash(claude plugin *)",
+      "Bash(node *)"
+    ]
+  },
+  "enabledMcpjsonServers": [
+    "context7",
+    "playwright",
+    "fetch",
+    "semgrep",
+    "github"
+  ]
+}
