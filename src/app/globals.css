@@ -1,19 +1,36 @@
 @import "tailwindcss";
 
 @theme {
+  /* ── Colour palette ── */
   --color-white: #ffffff;
   --color-cream: #f4edd9;
   --color-cream-light: #faf7f2;
   --color-navy: #0f172a;
+  --color-navy-mid: #1e293b;
+  --color-navy-soft: #334155;
   --color-whatsapp: #25d366;
-  --font-sans: var(--font-geist-sans);
+
+  /* ── Typography ── */
+  --font-sans: var(--font-open-sans);
+
+  /* ── Border radius ── */
+  --radius-card: 1.25rem;
+  --radius-pill: 9999px;
 }
 
+/* ── Base ── */
 html {
   scroll-behavior: smooth;
 }
 
 body {
   background-color: var(--color-white);
+  color: var(--color-navy);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Selection ── */
+::selection {
+  background-color: var(--color-cream);
   color: var(--color-navy);
 }
