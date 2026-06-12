@@ -1,7 +1,13 @@
+import { HeroSection } from "@/components/sections/HeroSection";
+import { AboutSection } from "@/components/sections/AboutSection";
+import { CatalogSection } from "@/components/sections/CatalogSection";
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen items-center justify-center">
-      <h1 className="text-2xl font-bold text-navy">Craftoria.co</h1>
-    </main>
+    <>
+      <HeroSection />
+      <AboutSection />
+      <CatalogSection />
+    </>
   );
 }

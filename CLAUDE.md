@@ -108,13 +108,15 @@ src/
 
 | Sprint | Topik | Status |
 |---|---|---|
-| Sprint 00 | Setup & Infrastructure | 🟡 In progress — protokol agent + Next.js 16/TS/Tailwind di-scaffold 2026-06-11 |
+| Sprint 00 | Setup & Infrastructure | ✅ Done — landing page Craftoria.co selesai 2026-06-12 |
 
 ---
 
 ## Fitur yang Sudah Dibangun
 
 > Daftar fitur yang sudah live, format: `- **Nama Fitur ✅ (YYYY-MM-DD):** ringkasan 1 kalimat.`
+
+- **Landing Page Profil ✅ (2026-06-12):** single-page statik (Hero, Tentang, Visi & Misi, Kenapa Kami, 3 kategori produk, Kontak) dengan CTA WhatsApp floating + kontekstual, Navbar sticky blur, dan Footer.
 
 ---
 
