@@ -4,10 +4,12 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { site, navItems } from "@/data/site";
+import { NavLink } from "@/components/molecules/NavLink";
 import { cn } from "@/lib/utils";
 
 /**
- * Navbar sticky — backdrop-blur saat scroll, mobile overlay dengan animasi.
+ * ORGANISM — Navbar
+ * Assembles: NavLink molecules + hamburger state + scroll blur effect.
  */
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -22,9 +24,7 @@ export function Navbar() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
+    return () => { document.body.style.overflow = ""; };
   }, [open]);
 
   return (
@@ -32,7 +32,7 @@ export function Navbar() {
       className={cn(
         "sticky top-0 z-40 transition-all duration-300",
         scrolled
-          ? "border-b border-navy/10 bg-white/80 shadow-sm backdrop-blur-lg"
+          ? "border-b border-navy/8 bg-white/85 shadow-sm backdrop-blur-xl"
           : "bg-white"
       )}
     >
@@ -40,21 +40,16 @@ export function Navbar() {
         {/* Brand */}
         <a
           href="#hero"
-          className="text-lg font-bold tracking-tight text-navy transition-opacity hover:opacity-70"
+          className="font-serif text-lg font-bold tracking-tight text-navy transition-opacity hover:opacity-70"
         >
           {site.name}
         </a>
 
-        {/* Desktop nav */}
-        <ul className="hidden items-center gap-8 md:flex">
+        {/* Desktop nav — NavLink molecules */}
+        <ul className="hidden items-center gap-10 md:flex">
           {navItems.map((item) => (
             <li key={item.href}>
-              <a
-                href={item.href}
-                className="relative text-sm font-medium text-navy/60 transition-colors duration-200 hover:text-navy after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-navy after:transition-all after:duration-300 hover:after:w-full"
-              >
-                {item.label}
-              </a>
+              <NavLink href={item.href}>{item.label}</NavLink>
             </li>
           ))}
         </ul>
@@ -74,7 +69,7 @@ export function Navbar() {
                 initial={{ rotate: -90, opacity: 0 }}
                 animate={{ rotate: 0, opacity: 1 }}
                 exit={{ rotate: 90, opacity: 0 }}
-                transition={{ duration: 0.15 }}
+                transition={{ duration: 0.12 }}
               >
                 <X className="h-5 w-5" />
               </motion.span>
@@ -84,7 +79,7 @@ export function Navbar() {
                 initial={{ rotate: 90, opacity: 0 }}
                 animate={{ rotate: 0, opacity: 1 }}
                 exit={{ rotate: -90, opacity: 0 }}
-                transition={{ duration: 0.15 }}
+                transition={{ duration: 0.12 }}
               >
                 <Menu className="h-5 w-5" />
               </motion.span>
@@ -100,21 +95,21 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="overflow-hidden border-t border-navy/10 md:hidden"
+            transition={{ duration: 0.22, ease: "easeInOut" }}
+            className="overflow-hidden border-t border-navy/8 md:hidden"
           >
             <ul className="flex flex-col gap-1 px-4 py-4">
               {navItems.map((item, i) => (
                 <motion.li
                   key={item.href}
-                  initial={{ opacity: 0, x: -10 }}
+                  initial={{ opacity: 0, x: -12 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05 }}
                 >
                   <a
                     href={item.href}
                     onClick={() => setOpen(false)}
-                    className="block rounded-lg px-4 py-3 text-base font-medium text-navy/80 transition-colors hover:bg-cream-light hover:text-navy"
+                    className="block rounded-xl px-4 py-3 text-base font-medium text-navy/75 transition-colors hover:bg-cream-light hover:text-navy"
                   >
                     {item.label}
                   </a>

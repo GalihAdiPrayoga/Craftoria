@@ -12,10 +12,11 @@
 
   /* ── Typography ── */
   --font-sans: var(--font-open-sans);
+  --font-serif: var(--font-playfair);
 
-  /* ── Border radius ── */
-  --radius-card: 1.25rem;
-  --radius-pill: 9999px;
+  /* ── Shadow ── */
+  --shadow-card: 0 4px 24px -4px rgba(15,23,42,0.10);
+  --shadow-card-hover: 0 16px 48px -8px rgba(15,23,42,0.18);
 }
 
 /* ── Base ── */
