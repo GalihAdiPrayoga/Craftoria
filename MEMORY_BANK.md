@@ -4,7 +4,7 @@
 > Dibaca PERTAMA oleh AI agent baru sebelum menyentuh kode apapun.
 > Wajib di-update setiap akhir sesi kerja (lihat protokol di `AGENTS.md § Memory Sync Protocol`).
 >
-> **Last updated:** 2026-06-12 · Agent: Antigravity (Gemini)
+> **Last updated:** 2026-06-12 · Agent: Antigravity (Gemini) — UI Redesign Sprint
 
 ---
 
@@ -27,7 +27,7 @@
 | Styling | Tailwind CSS v4 (`@theme` tokens) | ^4 |
 | Animation | Framer Motion | (latest, installed 2026-06-12) |
 | Icons | lucide-react | (latest, installed 2026-06-12) |
-| Class Utility | clsx + tailwind-merge (`cn()`) | (latest, installed 2026-06-12) |
+| Font | Open Sans (300–800) | via `next/font/google` |
 | Linting | ESLint 9 | `eslint-config-next` |
 | Package Manager | npm | — |
 | Database | ❌ Belum ada | — |
@@ -77,9 +77,11 @@ src/
 | `--color-cream` | `#f4edd9` | Aksen lembut, border item list |
 | `--color-cream-light` | `#faf7f2` | Background section alternatif, why-us cards |
 | `--color-navy` | `#0f172a` | Teks utama, navbar, footer bg, CTA primer |
+| `--color-navy-mid` | `#1e293b` | Footer main bg |
+| `--color-navy-soft` | `#334155` | Footer decorative blobs |
 | `--color-whatsapp` | `#25d366` | Tombol WA, floating button |
 
-**ATURAN:** Jangan tambah warna di luar 5 token di atas tanpa update `globals.css` dan tabel ini.
+**ATURAN:** Jangan tambah warna di luar token di atas tanpa update `globals.css` dan tabel ini.
 
 ---
 
@@ -137,6 +139,15 @@ Fungsi: buildWhatsAppLink(categoryTitle?: string)
   - CategoryCard: spring hover lift+scale, fill-hover CTA
 - Auto-fix: `Instagram` (tidak ada di lucide-react) → `AtSign`
 
+**UI Redesign** `5b19618` — style(ui): major redesign - Open Sans, dark hero, two-zone cards, modern footer
+- Font: Geist → **Open Sans** (300–800), token updated di `globals.css`
+- `globals.css`: tambah `--color-navy-mid`, `--color-navy-soft`, custom `::selection`
+- `HeroSection`: dark navy bg, dot-grid overlay, glassmorphism CTA, stats strip
+- `AboutSection`: pill `SectionLabel`, feature strip 3-col, dark visi card full-width, watermark number on why-us
+- `CategoryCard`: two-zone layout (colored header band + white body), accent cycling, `Check` item markers, product count badge, `index` prop baru
+- `CatalogSection`: pass `index` ke CategoryCard, grid `items-stretch`
+- `Footer`: full redesign — CTA band (dark card + WA button) + 4-col dark footer (`navy-mid`)
+
 ### 2026-06-11 — Claude Code
 - `8a43bdd` — chore: scaffold Next.js 16 project and agent protocol
 - `88cdde3` — feat(layout): add brand design tokens and base layout
@@ -181,6 +192,7 @@ npm run build        # Production build — belum pernah dijalankan
 ## Commit Log (Sprint 00)
 
 ```
+5b19618 style(ui): major redesign - Open Sans, dark hero, two-zone cards, modern footer
 a3f317c style(frontend): elevate UI with framer-motion animations and lucide-react icons
 5de08cf feat(ui): assemble complete landing page layout sections and client components
 335905e feat(ui): add WhatsApp util, icon/button primitives, and CategoryCard
