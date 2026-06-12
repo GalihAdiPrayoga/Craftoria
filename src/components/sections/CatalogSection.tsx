@@ -1,50 +1,96 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import { categories } from "@/data/categories";
 import { CategoryCard } from "@/components/organisms/CategoryCard";
-import { Heading } from "@/components/atoms/Heading";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export function CatalogSection() {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const containerRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement[]>([]);
+
+  useEffect(() => {
+    // Heading animation
+    if (headingRef.current) {
+      gsap.fromTo(
+        headingRef.current,
+        { opacity: 0, y: 32 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: headingRef.current,
+            start: "top 85%",
+            once: true,
+          },
+        }
+      );
+    }
+
+    // Cards stagger
+    if (cardsRef.current.length > 0) {
+      gsap.fromTo(
+        cardsRef.current,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power2.out",
+          stagger: 0.15,
+          delay: 0.2,
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 85%",
+            once: true,
+          },
+        }
+      );
+    }
+  }, []);
 
   return (
-    <section id="categories" className="scroll-mt-20 bg-cream-light py-28 lg:py-36">
+    <section id="categories" className="scroll-mt-20 bg-white py-32 lg:py-40 border-t border-navy/5">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         {/* Heading */}
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 32 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
-          className="mx-auto max-w-3xl text-center"
+        <div
+          ref={headingRef}
+          className="mx-auto max-w-3xl text-center opacity-0"
         >
-          <span className="inline-flex items-center gap-2 rounded-full border border-navy/15 bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-navy/70 shadow-sm">
-            Layanan &amp; Produk Unggulan
-          </span>
-          <Heading level="h2" className="mt-6 text-navy">
+          <div className="flex items-center justify-center gap-4 text-xs font-bold uppercase tracking-[0.25em] text-navy/40 mb-8">
+            <span className="h-px w-8 bg-navy/20" />
+            <span>04 / CATALOGUE</span>
+            <span className="h-px w-8 bg-navy/20" />
+          </div>
+          <p className="mt-8 font-serif text-3xl md:text-4xl leading-snug text-navy">
             Koleksi Terkurasi Kami
-          </Heading>
-          <p className="mt-6 text-lg leading-relaxed text-navy/85 font-sans">
+          </p>
+          <p className="mt-6 text-lg leading-relaxed text-navy/60 font-sans">
             Setiap lini produk kami dirancang agar fungsional, estetik, dan bisa
             disesuaikan sepenuhnya dengan tema momen berharga Anda.
           </p>
-        </motion.div>
+        </div>
 
         {/* Cards — equal height grid */}
-        <div className="mt-16 grid items-stretch gap-8 lg:grid-cols-3">
+        <div ref={containerRef} className="mt-20 lg:mt-24 grid items-stretch gap-8 lg:grid-cols-3">
           {categories.map((c, i) => (
-            <motion.div
+            <div
               key={c.id}
-              initial={{ opacity: 0, y: 40 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.2 + i * 0.15, ease: [0.21, 0.47, 0.32, 0.98] }}
-              className="flex"
+              ref={(el) => {
+                if (el) cardsRef.current[i] = el;
+              }}
+              className="flex opacity-0"
             >
               <CategoryCard category={c} index={i} />
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
 import type { Category } from "@/data/categories";
 import { buildWhatsAppLink } from "@/utils/whatsapp";
@@ -13,12 +12,6 @@ interface CategoryCardProps {
   index: number;
 }
 
-const HEADER_THEMES = [
-  { bg: "bg-cream", text: "text-navy", sub: "text-navy/55", label: "text-navy/30" },
-  { bg: "bg-navy", text: "text-white", sub: "text-white/55", label: "text-white/25" },
-  { bg: "bg-cream-light", text: "text-navy", sub: "text-navy/55", label: "text-navy/30" },
-];
-
 const INDEX_LABELS = ["01", "02", "03"];
 
 /**
@@ -27,20 +20,17 @@ const INDEX_LABELS = ["01", "02", "03"];
  * Full h-full flex-col for equal heights in grid.
  */
 export function CategoryCard({ category, index }: CategoryCardProps) {
-  const theme = HEADER_THEMES[index % HEADER_THEMES.length];
   const label = INDEX_LABELS[index % INDEX_LABELS.length];
   const imageSrc =
     categoryImages[category.id as keyof typeof categoryImages] ??
     categoryImages.drinkware;
 
   return (
-    <motion.article
+    <article
       id={category.id}
-      whileHover={{ y: -8 }}
-      transition={{ type: "spring", stiffness: 280, damping: 22 }}
-      className="group flex h-full scroll-mt-24 flex-col overflow-hidden rounded-3xl border border-navy/8 bg-white shadow-[var(--shadow-card)] transition-shadow duration-300 hover:shadow-[var(--shadow-card-hover)]"
+      className="group flex h-full scroll-mt-24 flex-col overflow-hidden bg-transparent border border-navy/10 hover:border-navy/30 transition-colors duration-500"
     >
-      {/* ── Image with zoom ── */}
+      {/* ── Image with muted zoom ── */}
       <DummyImage
         src={imageSrc}
         alt={category.title}
@@ -48,33 +38,27 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
         zoomOnHover
       />
 
-      {/* ── Coloured header ── */}
-      <div className={`${theme.bg} px-6 py-5`}>
+      {/* ── Minimal header ── */}
+      <div className="px-8 py-6 border-b border-navy/5">
         <div className="flex items-center justify-between">
-          <span className={`font-mono text-xs font-bold ${theme.label}`}>
+          <span className="font-mono text-xs font-bold text-navy/30">
             {label}
           </span>
-          <span
-            className={`rounded-full border px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
-              theme.bg === "bg-navy"
-                ? "border-white/12 text-white/30"
-                : "border-navy/12 text-navy/35"
-            }`}
-          >
+          <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-navy/40">
             {category.items.length} produk
           </span>
         </div>
-        <h3 className={`mt-2 text-lg font-bold leading-snug ${theme.text}`}>
+        <h3 className="mt-4 font-serif text-2xl text-navy">
           {category.title}
         </h3>
-        <p className={`mt-1 text-xs leading-5 ${theme.sub}`}>
+        <p className="mt-2 text-sm leading-relaxed text-navy/60 font-sans">
           {category.description}
         </p>
       </div>
 
       {/* ── Product list ── */}
-      <div className="flex flex-1 flex-col px-6 pt-4 pb-6">
-        <ul className="flex-1">
+      <div className="flex flex-1 flex-col px-8 pt-6 pb-8">
+        <ul className="flex-1 space-y-4">
           {category.items.map((item) => (
             <ProductItemRow key={item.name} item={item} />
           ))}
@@ -82,18 +66,18 @@ export function CategoryCard({ category, index }: CategoryCardProps) {
 
         {/* ── CTA Button ── */}
         <Button
-          variant="primary-navy"
+          variant="outline"
           size="md"
           icon={MessageCircle}
           href={buildWhatsAppLink(category.title)}
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`Konsultasi via WhatsApp untuk ${category.title}`}
-          className="mt-6 w-full"
+          className="mt-10 w-full border-navy/20 text-navy hover:bg-navy hover:text-white transition-colors"
         >
           Tanya &amp; Pesan
         </Button>
       </div>
-    </motion.article>
+    </article>
   );
 }

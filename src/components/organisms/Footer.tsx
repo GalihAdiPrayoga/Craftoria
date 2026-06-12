@@ -1,7 +1,6 @@
 import { site } from "@/data/site";
 import { MapPin, Phone, AtSign, ArrowUpRight } from "lucide-react";
-import { Button } from "@/components/atoms/Button";
-import { buildWhatsAppLink } from "@/utils/whatsapp";
+
 
 const navLinks = [
   { label: "Tentang Kami", href: "#about" },
@@ -26,41 +25,6 @@ export function Footer() {
 
   return (
     <footer id="contact">
-      {/* ── CTA band ── */}
-      <div className="bg-cream-light">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-          <div className="overflow-hidden rounded-3xl bg-navy px-8 py-14 sm:px-14">
-            <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
-              <div className="max-w-xl">
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-white/25">
-                  Mulai dari sini
-                </p>
-                <h2 className="mt-3 font-serif text-2xl font-bold text-white sm:text-3xl lg:text-4xl">
-                  Punya ide souvenir? <br />
-                  Mari wujudkan bersama.
-                </h2>
-                <p className="mt-4 text-sm leading-7 text-white/45">
-                  Konsultasi gratis via WhatsApp — kami siap membantu dari konsep
-                  hingga produk siap dibagikan.
-                </p>
-              </div>
-              <Button
-                variant="whatsapp"
-                size="lg"
-                icon={ArrowUpRight}
-                iconPosition="right"
-                href={buildWhatsAppLink()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="shrink-0"
-              >
-                Chat WhatsApp
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* ── Main footer dark ── */}
       <div className="bg-navy-mid text-white">
         <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">

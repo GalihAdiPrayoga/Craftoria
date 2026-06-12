@@ -3,7 +3,7 @@ import { Open_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/organisms/Navbar";
 import { Footer } from "@/components/organisms/Footer";
-import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
+import { FloatingWhatsApp } from "@/components/organisms/FloatingWhatsApp";
 
 const openSans = Open_Sans({
   variable: "--font-open-sans",
