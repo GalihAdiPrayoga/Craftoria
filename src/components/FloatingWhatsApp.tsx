@@ -2,11 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { buildWhatsAppLink } from "@/utils/whatsapp";
-import { WhatsAppIcon } from "@/components/ui/Icons";
+import { MessageCircle } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 /**
  * Tombol WhatsApp melayang (fixed bottom-right).
- * Muncul setelah scroll 300px. Mengarahkan ke WA dengan pesan generik.
+ * Muncul setelah scroll 300px dengan animasi spring.
  */
 export function FloatingWhatsApp() {
   const [visible, setVisible] = useState(false);
@@ -19,18 +20,24 @@ export function FloatingWhatsApp() {
   }, []);
 
   return (
-    <a
-      href={buildWhatsAppLink()}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Konsultasi via WhatsApp"
-      className={`fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-whatsapp text-white shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl ${
-        visible
-          ? "translate-y-0 opacity-100"
-          : "pointer-events-none translate-y-4 opacity-0"
-      }`}
-    >
-      <WhatsAppIcon className="h-7 w-7" />
-    </a>
+    <AnimatePresence>
+      {visible && (
+        <motion.a
+          href={buildWhatsAppLink()}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Konsultasi via WhatsApp"
+          initial={{ opacity: 0, scale: 0.6, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.6, y: 20 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          whileHover={{ scale: 1.12 }}
+          whileTap={{ scale: 0.95 }}
+          className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-whatsapp text-white shadow-xl"
+        >
+          <MessageCircle className="h-7 w-7" strokeWidth={1.75} />
+        </motion.a>
+      )}
+    </AnimatePresence>
   );
 }
