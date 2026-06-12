@@ -69,6 +69,26 @@ Task belum "selesai" sampai docs mencerminkan realita. Update dalam **commit yan
 Format: `<type>(scope): summary` — `feat | fix | docs | chore | refactor | test | perf`.
 Satu commit = satu perubahan logis, scope sempit. Jangan pernah commit secrets/tokens/credentials.
 
+### Step 7: Memory Sync — WAJIB setiap akhir sesi
+
+Sebelum menyatakan tugas selesai, update `MEMORY_BANK.md` dalam commit yang sama:
+
+```
+[ ] Pindahkan task selesai → § Recent Changes (tambah tanggal + commit hash)
+[ ] Update § Current Status dengan task berikutnya
+[ ] Catat dependensi baru di § Tech Stack
+[ ] Catat bug/gotcha baru di § Known Issues
+[ ] Update § Next Action Items (hapus item done, tambah item baru jika ada)
+[ ] git add . && git commit -m "docs(memory): sync MEMORY_BANK after <scope>"
+```
+
+> **Format Recent Changes entry:**
+> ```
+> ### YYYY-MM-DD — <Agent Name>
+> **<Batch/Task label>** `<commit-hash>` — <commit message>
+> - File yang dibuat/diubah: ringkasan 1 baris
+> ```
+
 ### Security Tooling (jalankan sebelum commit/PR relevan)
 ```bash
 semgrep --config auto <path>                 # auth/payment/webhook/upload/input/permission
@@ -110,4 +130,4 @@ Akhiri dengan: **Summary · Files changed · Validation commands run · Security
 >
 > Format: singkat, bertanggal, operasional. Replace catatan lama yang sudah tidak relevan.
 
-- **Updated:** 2026-06-11 — project initialized with agent protocol scaffold. Stack belum ditentukan.
+- **Updated: 2026-06-12** — Sprint 00 selesai ✅. Landing page Craftoria.co live di localhost:3000. Stack final: Next.js 16 + Tailwind v4 + Framer Motion + lucide-react. Tidak ada DB/auth/deployment yang aktif. Sprint 01 scope belum ditentukan — tunggu instruksi user. Baca `MEMORY_BANK.md` untuk state lengkap sebelum mulai task baru.

@@ -1,156 +1,184 @@
-# MEMORY BANK — Craftoria.co
+# MEMORY_BANK.md — Craftoria
 
-> **Tujuan file ini:** Sumber kebenaran tunggal bagi setiap AI agent atau developer yang mengambil alih project ini. Baca file ini PERTAMA sebelum menyentuh kode apapun.
-> **Update terakhir:** 2026-06-12
-> **Konvensi update:** Pindahkan task yang selesai ke 'Recent Changes', update 'Current Status', catat dependensi/isu baru. Commit bersama perubahan kode.
-
----
-
-## 🟢 Current Status
-
-**Fase:** Sprint 00 — SELESAI ✅
-**Landing page profil Craftoria.co sudah live di dev server (http://localhost:3000).**
-
-### Task Berikutnya yang Siap Dikerjakan (Sprint 01)
-- [ ] Production build test — jalankan `npm run build` dan pastikan output statis bersih
-- [ ] Deploy ke hosting (Vercel / Netlify) — belum ada konfigurasi deploy
-- [ ] Tambah `sitemap.xml` dan `robots.txt` untuk SEO
-- [ ] Tambah JSON-LD `LocalBusiness` schema (dihindari karena `dangerouslySetInnerHTML` — pakai metode string atau library aman)
-- [ ] Evaluasi audit performa Lighthouse (mobile score target: ≥ 90)
-- [ ] Isi URL Shopee asli di `src/data/site.ts` (saat ini placeholder search URL)
-- [ ] Tambah OG image (`opengraph-image.tsx` atau static file)
-- [ ] Setup `NEXT_PUBLIC_*` env vars jika ada kebutuhan konfigurasi runtime
+> **Tujuan file ini:** Snapshot operasional project yang selalu aktual.
+> Dibaca PERTAMA oleh AI agent baru sebelum menyentuh kode apapun.
+> Wajib di-update setiap akhir sesi kerja (lihat protokol di `AGENTS.md § Memory Sync Protocol`).
+>
+> **Last updated:** 2026-06-12 · Agent: Antigravity (Gemini)
 
 ---
 
-## 📋 Recent Changes
+## Current Status
 
-### 2026-06-12 — Batch 2 + UI Refinement (Sprint 00 Final)
-**Commit:** `a3f317c` — `style(frontend): elevate UI with framer-motion animations and lucide-react icons`
+**Phase:** Sprint 00 — Complete ✅
+**Next Sprint:** Sprint 01 — belum ditentukan (lihat § Next Action Items)
+**Dev Server:** `npm run dev` → http://localhost:3000 (sudah berjalan)
+**Build:** belum dijalankan production build (`npm run build`) — belum diperlukan
 
-**Files yang dibuat/diubah:**
-| File | Aksi | Keterangan |
+---
+
+## Tech Stack (Final — Sprint 00)
+
+| Area | Tech | Versi |
 |---|---|---|
-| `src/components/FloatingWhatsApp.tsx` | Upgraded | Framer Motion `AnimatePresence` spring, lucide `MessageCircle` |
-| `src/components/Navbar.tsx` | Upgraded | Animated hamburger (`Menu`↔`X`), accordion mobile menu, staggered items |
-| `src/components/Footer.tsx` | Upgraded | Lucide `Phone`, `AtSign`, `MapPin` icons; grid 3-kolom |
-| `src/components/sections/HeroSection.tsx` | Upgraded | Staggered entrance, blur blobs, bounce scroll indicator |
-| `src/components/sections/AboutSection.tsx` | Upgraded | `useInView` fade-up, lucide icons per card, spring hover-lift |
-| `src/components/sections/CatalogSection.tsx` | Upgraded | Staggered card entrance 100ms delay |
-| `src/components/CategoryCard.tsx` | Upgraded | Spring hover lift/scale, lucide `ChevronRight` + `MessageCircle` |
-| `src/lib/utils.ts` | Baru | `cn()` utility (clsx + tailwind-merge) |
-| `package.json` | Modified | Tambah `framer-motion`, `lucide-react`, `clsx`, `tailwind-merge` |
+| Framework | Next.js (App Router, Turbopack) | 16.2.9 |
+| UI Library | React | 19.2.4 |
+| Bahasa | TypeScript | 5.x |
+| Styling | Tailwind CSS v4 (`@theme` tokens) | ^4 |
+| Animation | Framer Motion | (latest, installed 2026-06-12) |
+| Icons | lucide-react | (latest, installed 2026-06-12) |
+| Class Utility | clsx + tailwind-merge (`cn()`) | (latest, installed 2026-06-12) |
+| Linting | ESLint 9 | `eslint-config-next` |
+| Package Manager | npm | — |
+| Database | ❌ Belum ada | — |
+| Auth | ❌ Belum ada | — |
+| Deployment | ❌ Belum ada | — |
 
-### 2026-06-12 — Batch 1 (Task 4–6)
-**Commit:** `335905e` — `feat(ui): add WhatsApp util, icon/button primitives, and CategoryCard`
-
-| File | Aksi |
-|---|---|
-| `src/utils/whatsapp.ts` | Baru — `buildWhatsAppLink(categoryTitle?)` |
-| `src/components/ui/Icons.tsx` | Baru — `WhatsAppIcon`, `ArrowRightIcon` (SVG murni) |
-| `src/components/ui/Button.tsx` | Baru — 3 varian: `primary`, `outline`, `ghost` |
-| `src/components/CategoryCard.tsx` | Baru |
-
-### 2026-06-11 — Scaffold & Data (Claude Code, Task 1–3)
-**Commits:** `8a43bdd`, `88cdde3`, `1998211`
-- Next.js 16 scaffold + agent protocol
-- Design tokens Tailwind v4 (`@theme`)
-- Data files: `src/data/site.ts`, `src/data/categories.ts`
+**Import alias:** `@/*` → `src/*`
 
 ---
 
-## 🏗️ Arsitektur Saat Ini
+## Struktur File (Sprint 00 Final)
 
 ```
 src/
 ├── app/
 │   ├── globals.css          # @theme tokens: cream, cream-light, navy, whatsapp
 │   ├── layout.tsx           # Root: Navbar + main + Footer + FloatingWhatsApp
-│   └── page.tsx             # Assembly: HeroSection, AboutSection, CatalogSection
+│   └── page.tsx             # Assembly: HeroSection + AboutSection + CatalogSection
 ├── components/
-│   ├── CategoryCard.tsx     # Client — hover animation, WA CTA kontekstual
-│   ├── FloatingWhatsApp.tsx # Client — fixed bottom-right, AnimatePresence
-│   ├── Footer.tsx           # Server — id="contact", grid 3-kolom
-│   ├── Navbar.tsx           # Client — sticky blur, mobile accordion
+│   ├── CategoryCard.tsx     # Client — hover spring animation, CTA WA kontekstual
+│   ├── FloatingWhatsApp.tsx # Client — AnimatePresence spring, muncul setelah scroll 300px
+│   ├── Footer.tsx           # Server — id="contact", lucide icons, 3-kolom grid
+│   ├── Navbar.tsx           # Client — sticky blur, mobile accordion, underline hover
 │   ├── sections/
-│   │   ├── HeroSection.tsx     # Client — staggered entrance
-│   │   ├── AboutSection.tsx    # Client — useInView, 3 sub-sections
-│   │   └── CatalogSection.tsx  # Client — staggered cards
+│   │   ├── HeroSection.tsx      # Client — staggered entrance, blur blobs, dual CTA
+│   │   ├── AboutSection.tsx     # Client — FadeUp useInView, lucide icons per card
+│   │   └── CatalogSection.tsx   # Client — staggered cards useInView
 │   └── ui/
-│       ├── Button.tsx       # Server — 3 variant, renders <a> atau <button>
-│       └── Icons.tsx        # Server — WhatsAppIcon, ArrowRightIcon SVG
+│       ├── Button.tsx       # Server — 3 variant (primary/outline/ghost), renders <a> jika href
+│       ├── Icons.tsx        # Server — WhatsAppIcon + ArrowRightIcon SVG
 ├── data/
-│   ├── site.ts              # brand, WA number, socials, navItems
-│   └── categories.ts        # 3 kategori + item list (typed)
+│   ├── site.ts              # Brand config, WA number, socials, navItems[]
+│   └── categories.ts        # 3 categories + ProductItem[] (typed)
 ├── lib/
-│   └── utils.ts             # cn() = clsx + tailwind-merge
+│   └── utils.ts             # cn() = clsx + twMerge
 └── utils/
-    └── whatsapp.ts          # buildWhatsAppLink(categoryTitle?)
+    └── whatsapp.ts          # buildWhatsAppLink(categoryTitle?) → wa.me URL
 ```
 
-### Anchor ID Map (navItems ↔ section id) — JANGAN UBAH TANPA SINKRONISASI
-| `href` di navItems | `id` di komponen |
-|---|---|
-| `#about` | `AboutSection` sub-section about |
-| `#vision-mission` | `AboutSection` sub-section vision-mission |
-| `#why-us` | `AboutSection` sub-section why-us |
-| `#categories` | `CatalogSection` |
-| `#contact` | `Footer` |
-
 ---
 
-## 🛠️ Tech Stack
+## Design Tokens (`src/app/globals.css`)
 
-| Layer | Tech | Versi |
+| Token | Hex | Usage |
 |---|---|---|
-| Framework | Next.js (App Router, Turbopack) | 16.2.9 |
-| UI Library | React | 19.2.4 |
-| Bahasa | TypeScript | 5.x |
-| Styling | Tailwind CSS v4 (`@tailwindcss/postcss`) | ^4 |
-| Animasi | **framer-motion** | latest (installed 2026-06-12) |
-| Icons | **lucide-react** | latest (installed 2026-06-12) |
-| Class Utility | **clsx** + **tailwind-merge** | latest (installed 2026-06-12) |
-| Linting | ESLint 9 (`eslint-config-next`) | 9.x |
-| Package Manager | npm | — |
-| Import alias | `@/*` → `src/*` | tsconfig |
-| Database / Auth / Storage | **Belum ada** — fase ini static site | — |
-| Deployment | **Belum dikonfigurasi** | — |
+| `--color-white` | `#ffffff` | Background utama, kartu |
+| `--color-cream` | `#f4edd9` | Aksen lembut, border item list |
+| `--color-cream-light` | `#faf7f2` | Background section alternatif, why-us cards |
+| `--color-navy` | `#0f172a` | Teks utama, navbar, footer bg, CTA primer |
+| `--color-whatsapp` | `#25d366` | Tombol WA, floating button |
+
+**ATURAN:** Jangan tambah warna di luar 5 token di atas tanpa update `globals.css` dan tabel ini.
 
 ---
 
-## ⚠️ Known Issues & Catatan Penting
+## Anchor ID Map (navItems ↔ sections)
 
-### Aman / Tidak Berisiko
-- Tidak ada auth, database, payment, atau input user — surface attack sangat kecil
-- Nomor WhatsApp (`6285113153923`) adalah kontak bisnis publik — aman di-hardcode di `site.ts`
-- Tidak ada env var sensitif saat ini
+| `navItems` href | Section `id` | Komponen |
+|---|---|---|
+| `#about` | `about` | AboutSection (sub-section 1) |
+| `#vision-mission` | `vision-mission` | AboutSection (sub-section 2) |
+| `#why-us` | `why-us` | AboutSection (sub-section 3) |
+| `#categories` | `categories` | CatalogSection |
+| `#contact` | `contact` | Footer |
 
-### Perlu Perhatian
-1. **Shopee URL placeholder** — `site.shopeeUrl` saat ini berisi URL pencarian (`shopee.co.id/search?keyword=craftoria.co`), bukan URL toko asli. Update sebelum deploy.
-2. **LF/CRLF warning** — git menampilkan warning konversi line ending (Windows). Pertimbangkan tambah `.gitattributes` jika jadi masalah.
-3. **2 moderate npm vulnerabilities** — jalankan `npm audit` untuk detail. Tidak kritis untuk static site, tapi review sebelum deploy production.
-4. **`lucide-react` tidak export `Instagram`** — sudah difix dengan `AtSign`. Jika butuh icon Instagram spesifik, cari alternatif di `lucide-react` atau embed SVG manual.
-5. **`src/components/ui/Button.tsx`** — masih ada, tapi komponen yang diupgrade (HeroSection, CategoryCard) sudah tidak menggunakannya lagi (langsung pakai `<a>` + Framer Motion). Bisa di-refactor atau dihapus di sprint berikutnya.
-
-### Aturan Wajib (dari CLAUDE.md)
-- Jangan call DB/ORM dari luar `server/repositories/` (belum ada, tapi tetap pegang prinsip saat ada)
-- Jangan expose secret ke client
-- Tidak ada `dangerouslySetInnerHTML` tanpa sanitasi
-- Semua env var sensitif tanpa prefix `NEXT_PUBLIC_`
+**ATURAN:** Jika menambah nav item baru, tambahkan juga di `src/data/site.ts` navItems[] DAN buat section/komponen dengan `id` yang cocok.
 
 ---
 
-## 🔒 Security Checklist (last run: belum dijalankan formal)
-- [ ] `npm run security:secrets` (gitleaks) — jalankan sebelum deploy
-- [ ] `npm run security:code` (semgrep) — jalankan sebelum deploy
-- [ ] `npm audit` — 2 moderate vulns, review sebelum deploy
-- [x] Tidak ada secret/token di codebase
-- [x] Tidak ada DB writes / mutation dari GET
-- [x] Semua WA links melalui `buildWhatsAppLink()` yang terpusat
+## WhatsApp Logic
+
+```
+Nomor: 6285113153923 (public, aman di-hardcode)
+Fungsi: buildWhatsAppLink(categoryTitle?: string)
+  - Tanpa arg → pesan generik konsultasi
+  - Dengan arg → pesan menyebut nama kategori
+```
 
 ---
 
-## 📌 Git Log Ringkas
+## Recent Changes
+
+### 2026-06-12 — Antigravity (Gemini)
+
+**Batch 1** `335905e` — feat(ui): add WhatsApp util, icon/button primitives, and CategoryCard
+- Buat `src/utils/whatsapp.ts` — `buildWhatsAppLink()`
+- Buat `src/components/ui/Icons.tsx` — `WhatsAppIcon`, `ArrowRightIcon`
+- Buat `src/components/ui/Button.tsx` — 3 variant, renders `<a>` jika href
+- Buat `src/components/CategoryCard.tsx` — kartu kategori + item list + CTA WA
+
+**Batch 2** `5de08cf` — feat(ui): assemble complete landing page layout sections and client components
+- Buat `FloatingWhatsApp.tsx`, `Navbar.tsx`, `Footer.tsx`
+- Buat `sections/HeroSection.tsx`, `AboutSection.tsx`, `CatalogSection.tsx`
+- Update `page.tsx` (assembly final) dan `layout.tsx` (global chrome)
+- Update `CLAUDE.md` — Sprint 00 ✅ Done, fitur Landing Page dicatat
+
+**Batch 3** `a3f317c` — style(frontend): elevate UI with framer-motion animations and lucide-react icons
+- Install: `framer-motion`, `lucide-react`, `clsx`, `tailwind-merge`
+- Buat `src/lib/utils.ts` — `cn()` utility
+- Upgrade semua komponen dengan Framer Motion + lucide icons
+  - FloatingWhatsApp: `AnimatePresence` spring
+  - Navbar: hamburger icon swap animation, mobile accordion
+  - Footer: `Phone`, `AtSign`, `MapPin` icons
+  - HeroSection: staggered entrance, blur blobs, scroll indicator
+  - AboutSection: `FadeUp` + `useInView`, icon per card, spring hover-lift
+  - CatalogSection: staggered cards
+  - CategoryCard: spring hover lift+scale, fill-hover CTA
+- Auto-fix: `Instagram` (tidak ada di lucide-react) → `AtSign`
+
+### 2026-06-11 — Claude Code
+- `8a43bdd` — chore: scaffold Next.js 16 project and agent protocol
+- `88cdde3` — feat(layout): add brand design tokens and base layout
+- `1998211` — feat(data): add site config and product category data
+
+---
+
+## Next Action Items
+
+> Sprint 00 selesai. Sprint 01 belum ditentukan. Items di bawah adalah saran — tunggu instruksi user.
+
+- [ ] **Produksi build test:** `npm run build` — belum pernah dijalankan, perlu diverifikasi sebelum deploy
+- [ ] **SEO tambahan:** JSON-LD `LocalBusiness` schema (opsional, dihindari karena butuh `dangerouslySetInnerHTML`)
+- [ ] **OG Image:** Tambah `opengraph-image.tsx` agar preview share sosmed lebih menarik
+- [ ] **Performance:** Tambah `next/image` jika ada gambar produk yang akan dimasukkan
+- [ ] **Analytics:** Tambah Google Analytics / Vercel Analytics jika perlu tracking pengunjung
+- [ ] **Deployment:** Tentukan platform (Vercel/Cloudflare/dll) dan setup CI/CD
+- [ ] **Sprint 01 scope:** Belum ditentukan — tanya user
+
+---
+
+## Known Issues / Catatan Penting
+
+- `npm audit` melaporkan **2 moderate severity vulnerabilities** dari dependencies — belum diverifikasi apakah dari framer-motion/lucide atau next.js itu sendiri. Tidak blocking untuk landing page statis.
+- Komponen `Button.tsx` dan `Icons.tsx` di `src/components/ui/` saat ini tidak digunakan langsung (digantikan oleh lucide + motion.a inline). Boleh di-refactor atau hapus jika membingungkan, tapi tidak wajib.
+- `lucide-react` tidak mengekspor `Instagram` — sudah diperbaiki ke `AtSign`. Cek icon lain jika ingin menambah.
+- `MEMORY_BANK.md` sempat masuk status `D` (deleted) di git — sudah di-restore dalam commit ini.
+
+---
+
+## Dev Commands
+
+```bash
+npm run dev          # http://localhost:3000 (Turbopack)
+npm run typecheck    # tsc --noEmit — wajib sebelum commit
+npm run lint         # ESLint
+npm run build        # Production build — belum pernah dijalankan
+```
+
+---
+
+## Commit Log (Sprint 00)
 
 ```
 a3f317c style(frontend): elevate UI with framer-motion animations and lucide-react icons
@@ -159,4 +187,6 @@ a3f317c style(frontend): elevate UI with framer-motion animations and lucide-rea
 1998211 feat(data): add site config and product category data
 88cdde3 feat(layout): add brand design tokens and base layout
 8a43bdd chore: scaffold Next.js 16 project and agent protocol
+52157e2 docs(plan): add landing page implementation plan for craftoria
+69d1c1a docs(spec): add landing page design spec for craftoria
 ```
