@@ -1,7 +1,7 @@
 # Craftoria UI Polish v2 — Design Spec
 
 **Tanggal:** 2026-06-15
-**Status:** Draft (menunggu approval user)
+**Status:** Approved (2026-06-15 — user setuju semua rekomendasi: G3 diagonal clip-path · G2 Playfair existing · G4 Vision band navy · CTA pakai buildWhatsAppLink)
 **Author:** Claude Code + User
 
 ---

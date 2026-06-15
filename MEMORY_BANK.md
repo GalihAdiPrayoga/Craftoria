@@ -10,8 +10,8 @@
 
 ## Current Status
 
-**Phase:** Gallery Refine — Complete ✅ (2026-06-13)
-**Next Sprint:** Deployment (Vercel) — siap; opsional tambah `metadataBase` + OG image
+**Phase:** UI Polish v2 — Implemented, **validasi pending** ⚠️ (2026-06-15). Sebelumnya: Gallery Refine ✅ (2026-06-13).
+**Next Sprint:** Jalankan validasi UI Polish v2 (`typecheck`/`lint`/`build` + QA Playwright konfirmasi bug navbar) → lalu Deployment (Vercel); opsional `metadataBase` + OG image
 **Dev Server:** `npm run dev` → http://localhost:3000
 **Build:** ✅ production build sukses (Next.js 16, fully static). `npm run predeploy` hijau (lint/typecheck/build/gitleaks/semgrep).
 
@@ -119,6 +119,23 @@ Fungsi: buildWhatsAppLink(categoryTitle?: string)
 
 ## Recent Changes
 
+### 2026-06-15 — Claude Code (UI Polish v2)
+
+**UI Polish v2** `pending` — feat(ui): hero serif, diagonal dividers, navy vision band, navbar contrast fix
+- Spec: `docs/superpowers/specs/2026-06-15-craftoria-ui-polish-v2-design.md` · Plan: `docs/superpowers/plans/2026-06-15-craftoria-ui-polish-v2.md`. **Constraint: nol warna baru** (hanya token navy/cream/white).
+- `Navbar.tsx`: fix bug kontras — ganti threshold `innerHeight-80` (rapuh saat hero < 100vh) → `IntersectionObserver` pada `#hero` (fallback `scrollY>24`).
+- `HeroSection.tsx`: judul `font-sans` → `font-serif` (Playfair, konsisten editorial); `pt-24 pb-16` → `min-h-[88vh] flex items-center`; CTA hardcode `wa.me` → `buildWhatsAppLink()`; hapus wave SVG → divider diagonal `clip-path`.
+- `Footer.tsx`: hapus wave SVG → divider diagonal `clip-path` (arah konsisten dgn Hero→About).
+- `AboutSection.tsx`: section `#vision-mission` di-invert jadi **band navy gelap** (focal point, pecah ritme cream→white); `SectionLabel` dapat prop `light`.
+- `globals.css` + `AboutSection`/`GallerySection`: anti-FOUC — class `.reveal-fade` + `@media (prefers-reduced-motion)` & `(scripting:none)` paksa konten visible bila JS gagal/reduced-motion.
+- ⚠️ **Validasi BELUM dijalankan** (sandbox Bash down saat sesi): `typecheck`/`lint`/`build`/QA Playwright pending. Bug navbar G1 belum dikonfirmasi visual.
+
+### 2026-06-15 — Antigravity (Gemini)
+**Visual Enhancements Point 1 & 2** `pending` — feat(ui): improve about and vision-mission section aesthetics
+- `AboutSection.tsx`: Diubah tampilan pada poin 1 (ABOUT) dan poin 2 (VISION & MISSION).
+- Point 1: Menambahkan watermark besar "STUDIO" dan efek glassmorphism interaktif.
+- Point 2 (Vision & Mission): User menolak background navy karena kurang kontras, diganti menjadi "Bento Box" Grid modern dengan latar belakang terang (`bg-white`) yang terstruktur secara asimetris. Kartu Visi Utama ditambahkan efek *inverted hover* (berubah menjadi gelap saat di-*hover*) menyerupai kartu di *section* Why Us.
+
 ### 2026-06-15 — Antigravity (Gemini)
 
 **Visual & Interactive Enhancements** `pending` — feat(ui): improve about section interactivity and gallery masonry
@@ -210,6 +227,8 @@ Fungsi: buildWhatsAppLink(categoryTitle?: string)
 - **trivy** akan FATAL bila men-scan `.next/dev/lock` saat dev server jalan (Windows file-lock). Sudah dimitigasi via `--skip-dirs .next` di `security:fs`. Jika masih kena, stop dev server dulu sebelum `npm run security:all`.
 - `data/categories.ts` kini **legacy** (tak dirender setelah katalog → gallery). Bisa dihapus bila tak ada rencana pakai ulang.
 - Foto gallery campuran: ada poster promo ber-teks (mis. "TOTEBAG CANVAS CUSTOM") & foto produk bersih. Kategori di `gallery.ts` hasil kurasi — verifikasi ulang bila menambah/mengganti foto.
+- **Utang teknis animasi (UI Polish v2):** 3 sistem animasi co-exist (GSAP ScrollTrigger + Framer Motion + CSS transition) untuk landing statis → bundle berlebih. Konsolidasi ke satu sistem belum dikerjakan (di luar scope v2). Anti-FOUC sudah dimitigasi via `.reveal-fade` + media query, tapi reveal masih bergantung GSAP untuk path normal.
+- **UI Polish v2 belum tervalidasi:** perubahan 2026-06-15 ditulis tanpa menjalankan `typecheck`/`lint`/`build` (sandbox down). Jalankan `npm run predeploy` + QA visual (terutama transisi navbar Hero→About) sebelum commit/deploy.
 
 ---
 

@@ -35,3 +35,21 @@ body {
   background-color: var(--color-cream);
   color: var(--color-navy);
 }
+
+/* ── Reveal safety ──
+   Elements animated in by JS start hidden (.opacity-0 / GSAP). If the user
+   prefers reduced motion, or scripting is unavailable, force them visible so
+   content never stays blank (anti-FOUC, SEO/a11y safe). */
+@media (prefers-reduced-motion: reduce) {
+  .animate-item,
+  .reveal-fade {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+@media (scripting: none) {
+  .reveal-fade {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

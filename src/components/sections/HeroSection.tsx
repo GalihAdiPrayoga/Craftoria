@@ -5,6 +5,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { Sparkles, ArrowRight } from "lucide-react";
+import { buildWhatsAppLink } from "@/utils/whatsapp";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -44,7 +45,7 @@ export function HeroSection() {
       <section
         id="hero"
       ref={sectionRef}
-      className="relative overflow-hidden bg-navy pt-24 pb-16 lg:pt-28 lg:pb-20"
+      className="relative flex min-h-[88vh] items-center overflow-hidden bg-navy pt-28 pb-16 lg:pb-20"
     >
       <div ref={contentRef} className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
@@ -57,7 +58,7 @@ export function HeroSection() {
                   Studio Kreatif Souvenir & Merchandise
                 </p>
               </div>
-              <h1 className="text-5xl md:text-6xl font-bold font-sans text-white leading-tight text-balance">
+              <h1 className="font-serif text-5xl md:text-6xl font-medium text-white leading-[1.12] text-balance">
                 Desain Eksklusif untuk Setiap Momen
               </h1>
             </div>
@@ -69,7 +70,7 @@ export function HeroSection() {
             {/* CTA Buttons */}
             <div className="animate-item flex flex-col sm:flex-row gap-4 pt-2">
               <a
-                href="https://wa.me/6285113153923?text=Halo%2C%20saya%20ingin%20berkonsultasi%20tentang%20souvenir%20dan%20merchandise"
+                href={buildWhatsAppLink()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center bg-cream text-navy px-8 py-4 rounded-lg font-semibold hover:bg-cream-light transition-all duration-300 group shadow-lg hover:shadow-xl"

@@ -16,11 +16,22 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => {
-      // Trigger when scrolled past the hero section (which is 100vh)
-      const threshold = window.innerHeight ? window.innerHeight - 80 : 100;
-      setScrolled(window.scrollY > threshold);
-    };
+    const hero = document.getElementById("hero");
+
+    // Primary: observe the hero. Navbar turns solid the moment the hero is no
+    // longer behind it — robust regardless of hero height (was a magic
+    // `innerHeight - 80` threshold that broke when hero < 100vh).
+    if (hero && typeof IntersectionObserver !== "undefined") {
+      const observer = new IntersectionObserver(
+        ([entry]) => setScrolled(!entry.isIntersecting),
+        { rootMargin: "-72px 0px 0px 0px", threshold: 0 }
+      );
+      observer.observe(hero);
+      return () => observer.disconnect();
+    }
+
+    // Fallback: simple scroll threshold.
+    const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
