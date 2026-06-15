@@ -51,7 +51,7 @@ export function Lightbox({ images, index, onClose, onNavigate }: LightboxProps) 
       role="dialog"
       aria-modal="true"
       aria-label="Pratinjau foto produk"
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-navy/90 backdrop-blur-sm"
+      className="fixed inset-0 z-100 flex items-center justify-center bg-navy/90 backdrop-blur-sm"
       onClick={onClose}
     >
       <button

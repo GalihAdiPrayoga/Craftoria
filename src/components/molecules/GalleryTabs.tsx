@@ -32,7 +32,7 @@ export function GalleryTabs({ active, onChange }: GalleryTabsProps) {
             onClick={() => onChange(t.id)}
             className={cn(
               "whitespace-nowrap rounded-full px-5 py-2 text-sm font-semibold transition-colors duration-200",
-              "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy",
+              "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy",
               isActive
                 ? "bg-navy text-white"
                 : "bg-navy/5 text-navy/60 hover:bg-navy/10 hover:text-navy"
