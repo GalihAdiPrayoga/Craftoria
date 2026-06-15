@@ -135,6 +135,7 @@ Fungsi: buildWhatsAppLink(categoryTitle?: string)
 - `AboutSection.tsx`: Diubah tampilan pada poin 1 (ABOUT) dan poin 2 (VISION & MISSION).
 - Point 1: Menambahkan watermark besar "STUDIO" dan efek glassmorphism interaktif.
 - Point 2 (Vision & Mission): User menolak background navy karena kurang kontras, diganti menjadi "Bento Box" Grid modern dengan latar belakang terang (`bg-white`) yang terstruktur secara asimetris. Kartu Visi Utama ditambahkan efek *inverted hover* (berubah menjadi gelap saat di-*hover*) menyerupai kartu di *section* Why Us.
+- `Footer.tsx`: Menambahkan `buildWhatsAppLink()` pada elemen nomor telepon sehingga dapat langsung diklik oleh pengguna.
 
 ### 2026-06-15 — Antigravity (Gemini)
 

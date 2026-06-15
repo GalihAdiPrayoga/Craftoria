@@ -1,5 +1,6 @@
 import { site } from "@/data/site";
 import { MapPin, Phone, AtSign, ArrowUpRight } from "lucide-react";
+import { buildWhatsAppLink } from "@/utils/whatsapp";
 
 
 const navLinks = [
@@ -56,7 +57,9 @@ export function Footer() {
               <ul className="mt-6 space-y-2.5 text-sm text-white/50">
                 <li className="flex items-center gap-2.5">
                   <Phone className="h-4 w-4 shrink-0 text-white/20" strokeWidth={1.5} />
-                  {site.phoneDisplay}
+                  <a href={buildWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300">
+                    {site.phoneDisplay}
+                  </a>
                 </li>
                 <li className="flex items-center gap-2.5">
                   <AtSign className="h-4 w-4 shrink-0 text-white/20" strokeWidth={1.5} />
