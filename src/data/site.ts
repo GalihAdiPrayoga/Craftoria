@@ -10,7 +10,7 @@ export const site = {
   instagram: "https://www.instagram.com/craftoria.coo/",
   tiktok: "https://www.tiktok.com/@craftoria.co",
   shopeeLabel: "Craftoria.co Official Shop",
-  shopeeUrl: "https://shopee.co.id/search?keyword=craftoria.co",
+  shopeeUrl: "https://shopee.co.id/craftoria.co",
   location: "Mojokerto, Jawa Timur, Indonesia",
 } as const;
 

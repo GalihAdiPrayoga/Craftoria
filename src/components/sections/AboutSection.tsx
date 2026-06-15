@@ -89,7 +89,7 @@ export function AboutSection() {
   return (
     <>
       {/* ── Tentang Kami ── */}
-      <section id="about" className="relative z-20 scroll-mt-20 overflow-hidden bg-cream-light py-24 lg:py-32">
+      <section id="about" className="relative z-20 scroll-mt-0 overflow-hidden bg-cream-light py-24 lg:py-32">
         {/* Decorative Blobs */}
         <div className="pointer-events-none absolute top-[-10%] right-[-5%] h-[500px] w-[500px] rounded-full bg-cream/60 blur-[100px]" />
         <div className="pointer-events-none absolute top-[40%] left-[-10%] h-[400px] w-[400px] rounded-full bg-white/80 blur-[80px]" />
@@ -158,7 +158,7 @@ export function AboutSection() {
       </section>
 
       {/* ── Visi & Misi ── */}
-      <section id="vision-mission" className="relative z-20 scroll-mt-20 bg-white py-24 lg:py-32 border-t border-navy/5">
+      <section id="vision-mission" className="relative z-20 scroll-mt-0 bg-white py-24 lg:py-32 border-t border-navy/5">
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
           <FadeUp>
             <div className="text-center max-w-2xl mx-auto mb-16">
@@ -169,20 +169,20 @@ export function AboutSection() {
             </div>
           </FadeUp>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-fr">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 auto-rows-fr">
             {/* Vision - Large Bento Box */}
             <div className="md:col-span-2 lg:row-span-2">
               <FadeUp className="h-full">
-                <div className="h-full relative group p-8 sm:p-12 rounded-md bg-cream-light border border-navy/5 transition-all duration-500 hover:bg-navy hover:-translate-y-1 hover:shadow-card-hover overflow-hidden flex flex-col justify-center cursor-pointer">
+                <div className="h-full relative group p-6 sm:p-8 rounded-md bg-cream-light border border-navy/5 transition-all duration-500 hover:bg-navy hover:-translate-y-1 hover:shadow-card-hover overflow-hidden flex flex-col justify-center cursor-pointer">
                   {/* Decorative hover background blob */}
                   <div className="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-navy/5 transition-transform duration-700 group-hover:scale-[3.5] group-hover:bg-white/5 pointer-events-none" />
                   <div className="relative z-10">
-                    <div className="mb-8 inline-flex items-center gap-3 p-2.5 pr-5 rounded-full justify-center bg-white shadow-sm border border-navy/5 transition-colors duration-500 group-hover:bg-white/10 group-hover:border-white/10">
+                    <div className="mb-6 inline-flex items-center gap-3 p-2.5 pr-5 rounded-full justify-center bg-white shadow-sm border border-navy/5 transition-colors duration-500 group-hover:bg-white/10 group-hover:border-white/10">
                       <span className="text-xs font-bold uppercase tracking-[0.15em] text-navy/60 transition-colors duration-500 group-hover:text-white/80">
                         Visi Utama
                       </span>
                     </div>
-                    <p className="font-serif text-2xl sm:text-3xl md:text-4xl font-medium leading-snug text-navy transition-colors duration-500 group-hover:text-white">
+                    <p className="font-serif text-xl sm:text-2xl md:text-3xl font-medium leading-snug text-navy transition-colors duration-500 group-hover:text-white">
                       Menjadi studio kreatif andalan dalam penyediaan souvenir dan
                       merchandise yang estetik, solutif, dan menyenangkan bagi setiap klien.
                     </p>
@@ -194,7 +194,7 @@ export function AboutSection() {
             {/* Mission 1 */}
             <div className="md:col-span-2 lg:col-span-2 lg:row-span-1">
               <FadeUp delay={0.1} className="h-full">
-                <div className="h-full group p-8 sm:p-10 rounded-md bg-white border border-navy/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-500 hover:shadow-xl hover:-translate-y-1 relative overflow-hidden flex flex-col sm:flex-row items-start sm:items-center gap-6">
+                <div className="h-full group p-6 sm:p-8 rounded-md bg-white border border-navy/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-500 hover:shadow-xl hover:-translate-y-1 relative overflow-hidden flex flex-col sm:flex-row items-start sm:items-center gap-5">
                   <div className="absolute inset-0 bg-linear-to-br from-cream/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none" />
                   <div className="relative z-10 shrink-0 p-5 rounded-3xl bg-cream-light text-navy transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6">
                     <Paintbrush2 className="h-8 w-8" strokeWidth={1.5} />
@@ -214,7 +214,7 @@ export function AboutSection() {
             {/* Mission 2 */}
             <div className="md:col-span-1 lg:col-span-1 lg:row-span-1">
               <FadeUp delay={0.2} className="h-full">
-                <div className="h-full group p-8 rounded-md bg-white border border-navy/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-500 hover:shadow-xl hover:-translate-y-1 relative overflow-hidden flex flex-col">
+                <div className="h-full group p-6 rounded-md bg-white border border-navy/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-500 hover:shadow-xl hover:-translate-y-1 relative overflow-hidden flex flex-col">
                   <div className="absolute inset-0 bg-linear-to-br from-cream/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none" />
                   <div className="relative z-10 mb-6 w-fit p-4 rounded-2xl bg-cream-light text-navy transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6">
                     <ShieldCheck className="h-6 w-6" strokeWidth={1.5} />
@@ -234,7 +234,7 @@ export function AboutSection() {
             {/* Mission 3 */}
             <div className="md:col-span-1 lg:col-span-1 lg:row-span-1">
               <FadeUp delay={0.3} className="h-full">
-                <div className="h-full group p-8 rounded-md bg-white border border-navy/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-500 hover:shadow-xl hover:-translate-y-1 relative overflow-hidden flex flex-col">
+                <div className="h-full group p-6 rounded-md bg-white border border-navy/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-500 hover:shadow-xl hover:-translate-y-1 relative overflow-hidden flex flex-col">
                   <div className="absolute inset-0 bg-linear-to-br from-cream/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none" />
                   <div className="relative z-10 mb-6 w-fit p-4 rounded-2xl bg-cream-light text-navy transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6">
                     <HandHeart className="h-6 w-6" strokeWidth={1.5} />
@@ -255,7 +255,7 @@ export function AboutSection() {
       </section>
 
       {/* ── Kenapa Kami ── */}
-      <section id="why-us" className="relative z-20 scroll-mt-20 bg-cream-light py-24 lg:py-32">
+      <section id="why-us" className="relative z-20 scroll-mt-0 bg-cream-light py-24 lg:py-32">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <FadeUp>
             <div className="max-w-2xl">
