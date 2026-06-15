@@ -6,7 +6,7 @@ const navLinks = [
   { label: "Tentang Kami", href: "#about" },
   { label: "Visi & Misi", href: "#vision-mission" },
   { label: "Kenapa Kami", href: "#why-us" },
-  { label: "Produk", href: "#categories" },
+  { label: "Galeri", href: "#gallery" },
 ];
 
 const socialLinks = [
@@ -17,14 +17,28 @@ const socialLinks = [
 
 /**
  * ORGANISM — Footer
- * Assembles: CTA band + 4-col dark footer using Button atom.
+ * Assembles: wave transition + 4-col dark footer.
  * id="contact" — scroll target dari navItems.
  */
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer id="contact">
+    <footer id="contact" className="relative z-20">
+      {/* Wave transition — sits flush between white section and navy footer */}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1440 320"
+        className="block w-full -mb-px"
+        preserveAspectRatio="none"
+      >
+        <path
+          fill="#1e293b"
+          fillOpacity="1"
+          d="M0,64L30,101.3C60,139,120,213,180,218.7C240,224,300,160,360,144C420,128,480,160,540,165.3C600,171,660,149,720,133.3C780,117,840,107,900,85.3C960,64,1020,32,1080,42.7C1140,53,1200,107,1260,122.7C1320,139,1380,117,1410,106.7L1440,96L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"
+        />
+      </svg>
+
       {/* ── Main footer dark ── */}
       <div className="bg-navy-mid text-white">
         <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
@@ -32,10 +46,10 @@ export function Footer() {
 
             {/* Brand */}
             <div className="sm:col-span-2 lg:col-span-1">
-              <p className="font-serif text-lg font-bold tracking-tight">
+              <p className="font-sans text-xl font-black tracking-tighter">
                 {site.name}
               </p>
-              <p className="mt-2.5 text-sm leading-7 text-white/40">
+              <p className="mt-3 text-sm leading-7 text-white/40">
                 Studio kreatif souvenir &amp; merchandise di Mojokerto, Jawa
                 Timur. Fungsional, estetik, personal.
               </p>

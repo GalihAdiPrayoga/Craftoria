@@ -109,6 +109,7 @@ src/
 | Sprint | Topik | Status |
 |---|---|---|
 | Sprint 00 | Setup & Infrastructure | ✅ Done — landing page Craftoria.co selesai 2026-06-12 |
+| Gallery Refine | Katalog → Gallery + polish + deploy-ready | ✅ Done 2026-06-13 — build production hijau |
 
 ---
 
@@ -117,6 +118,7 @@ src/
 > Daftar fitur yang sudah live, format: `- **Nama Fitur ✅ (YYYY-MM-DD):** ringkasan 1 kalimat.`
 
 - **Landing Page Profil ✅ (2026-06-12):** single-page statik (Hero, Tentang, Visi & Misi, Kenapa Kami, 3 kategori produk, Kontak) dengan CTA WhatsApp floating + kontekstual, Navbar sticky blur, dan Footer.
+- **Gallery Produk ✅ (2026-06-13):** section galeri image-forward (30 foto asli di `public/image/catalog/`) dengan filter kategori (Drinkware/Decor/Daily) + lightbox keyboard-accessible, menggantikan katalog teksual; Hero pakai value-props + CTA `#gallery`, Why-Us jadi grid kartu. Build production hijau via `npm run predeploy`.
 
 ---
 
