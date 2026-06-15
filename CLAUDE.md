@@ -110,7 +110,7 @@ src/
 |---|---|---|
 | Sprint 00 | Setup & Infrastructure | ✅ Done — landing page Craftoria.co selesai 2026-06-12 |
 | Gallery Refine | Katalog → Gallery + polish + deploy-ready | ✅ Done 2026-06-13 — build production hijau |
-| UI Polish v2 | Hero serif, diagonal divider, navy vision band, fix navbar kontras, anti-FOUC | ⚠️ Implemented 2026-06-15 — **validasi pending** (sandbox down saat sesi): typecheck/lint/build/QA belum dijalankan |
+| UI Polish v2 | Hero serif, diagonal divider, navbar kontras, anti-FOUC | ✅ Done 2026-06-15 — validated & build success |
 
 ---
 

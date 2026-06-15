@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { site, navItems } from "@/data/site";
@@ -55,12 +56,27 @@ export function Navbar() {
         {/* Brand */}
         <a
           href="#hero"
-          className={cn(
-            "font-sans text-2xl font-black tracking-tighter transition-colors hover:opacity-80",
-            scrolled || open ? "text-navy" : "text-white"
-          )}
+          className="flex items-center gap-3 transition-opacity hover:opacity-80"
         >
-          {site.name}
+          <div className="relative h-10 w-10 md:h-12 md:w-12 transition-all duration-300">
+            <Image 
+              src="/image/logo/logo craftoria.webp"
+              alt="Craftoria Logo"
+              fill
+              sizes="(max-width: 768px) 40px, 48px"
+              className={cn(
+                "object-contain object-left",
+                !(scrolled || open) && "brightness-0 invert"
+              )}
+              priority
+            />
+          </div>
+          <span className={cn(
+            "font-sans text-2xl font-black tracking-tighter transition-colors",
+            scrolled || open ? "text-navy" : "text-white"
+          )}>
+            {site.name}
+          </span>
         </a>
 
         {/* Desktop nav — NavLink molecules */}

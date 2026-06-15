@@ -11,10 +11,10 @@ if (typeof window !== "undefined") {
 
 function FadeUp({ children, delay = 0, className }: { children: React.ReactNode; delay?: number; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
-  
+
   useEffect(() => {
     if (!ref.current) return;
-    
+
     const ctx = gsap.context(() => {
       gsap.fromTo(
         ref.current,
@@ -22,12 +22,12 @@ function FadeUp({ children, delay = 0, className }: { children: React.ReactNode;
         {
           opacity: 1,
           y: 0,
-          duration: 0.7,
+          duration: 0.65,
           delay,
           ease: "power2.out",
           scrollTrigger: {
             trigger: ref.current,
-            start: "top 85%",
+            start: "top 87%",
             once: true
           }
         }
@@ -44,19 +44,7 @@ function FadeUp({ children, delay = 0, className }: { children: React.ReactNode;
   );
 }
 
-function SectionLabel({ no, title, light = false }: { no: string; title: string; light?: boolean }) {
-  return (
-    <div
-      className={`flex items-center gap-4 text-xs font-bold uppercase tracking-[0.25em] mb-8 ${
-        light ? "text-cream/60" : "text-navy/40"
-      }`}
-    >
-      <span>{no}</span>
-      <span className={`h-px w-8 ${light ? "bg-cream/30" : "bg-navy/20"}`} />
-      <span>{title}</span>
-    </div>
-  );
-}
+
 
 const missions = [
   {
@@ -103,21 +91,21 @@ export function AboutSection() {
       {/* ── Tentang Kami ── */}
       <section id="about" className="relative z-20 scroll-mt-20 overflow-hidden bg-cream-light py-24 lg:py-32">
         {/* Decorative Blobs */}
-        <div className="pointer-events-none absolute -top-[10%] -right-[5%] h-[500px] w-[500px] rounded-full bg-cream/60 blur-[100px]" />
-        <div className="pointer-events-none absolute top-[40%] -left-[10%] h-[400px] w-[400px] rounded-full bg-white/80 blur-[80px]" />
-        
+        <div className="pointer-events-none absolute top-[-10%] right-[-5%] h-[500px] w-[500px] rounded-full bg-cream/60 blur-[100px]" />
+        <div className="pointer-events-none absolute top-[40%] left-[-10%] h-[400px] w-[400px] rounded-full bg-white/80 blur-[80px]" />
+
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-8 items-start">
             <div className="lg:col-span-5 relative">
               {/* Big Watermark Text */}
-              <span className="absolute -top-14 -left-8 text-[7rem] md:text-[9rem] font-bold text-navy/[0.03] select-none z-0 tracking-tighter leading-none">
+              <span className="absolute -top-14 -left-8 text-[7rem] md:text-[9rem] font-bold text-navy/3 select-none z-0 tracking-tighter leading-none">
                 STUDIO
               </span>
               <div className="relative z-10">
                 <FadeUp>
-                  <SectionLabel no="01" title="ABOUT" />
+
                   <p className="font-serif text-4xl md:text-5xl leading-tight text-navy">
-                    Studio kreatif <span className="text-transparent bg-clip-text bg-gradient-to-r from-navy to-navy-soft italic">souvenir &amp; merchandise</span>
+                    Studio kreatif <span className="text-transparent bg-clip-text bg-linear-to-r from-navy to-navy-soft italic">souvenir &amp; merchandise</span>
                   </p>
                 </FadeUp>
               </div>
@@ -130,9 +118,6 @@ export function AboutSection() {
                   <strong className="text-navy font-medium"> fungsional, minimalis, dan bernilai estetika tinggi.</strong>
                 </p>
                 <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-5 p-6 rounded-2xl bg-white/70 backdrop-blur-md border border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-cream-light text-navy">
-                    <Sparkles className="h-7 w-7" />
-                  </div>
                   <p className="text-[0.938rem] font-medium text-navy/80 leading-relaxed">
                     Melalui pendekatan desain berkarakter dan teknik cetak digital modern, hasil akhir tak sekadar indah, tetapi juga bercerita.
                   </p>
@@ -155,8 +140,8 @@ export function AboutSection() {
                     key={f.label}
                     className="group relative flex flex-col items-start gap-5 p-8 rounded-3xl bg-white/80 backdrop-blur-md border border-white transition-all duration-500 hover:shadow-card-hover hover:-translate-y-2 cursor-pointer overflow-hidden"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-cream/30 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                    
+                    <div className="absolute inset-0 bg-linear-to-br from-cream/30 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
                     <div className="relative z-10 p-4 rounded-2xl bg-cream-light text-navy/50 transition-all duration-500 group-hover:bg-navy group-hover:text-white group-hover:shadow-xl group-hover:scale-110 group-hover:-rotate-6">
                       <Icon className="h-6 w-6" strokeWidth={1.5} />
                     </div>
@@ -177,13 +162,9 @@ export function AboutSection() {
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
           <FadeUp>
             <div className="text-center max-w-2xl mx-auto mb-16">
-              <div className="flex items-center justify-center gap-4 text-xs font-bold uppercase tracking-[0.25em] mb-6 text-navy/40">
-                <span>02</span>
-                <span className="h-px w-8 bg-navy/20" />
-                <span>VISION & MISSION</span>
-              </div>
+
               <p className="font-serif text-4xl md:text-5xl leading-tight text-navy">
-                Arah &amp; komitmen <span className="text-transparent bg-clip-text bg-gradient-to-r from-navy to-navy-soft italic">kreatif kami</span>
+                Arah &amp; komitmen <span className="text-transparent bg-clip-text bg-linear-to-r from-navy to-navy-soft italic">kreatif kami</span>
               </p>
             </div>
           </FadeUp>
@@ -192,7 +173,7 @@ export function AboutSection() {
             {/* Vision - Large Bento Box */}
             <div className="md:col-span-2 lg:row-span-2">
               <FadeUp className="h-full">
-                <div className="h-full relative group p-8 sm:p-12 rounded-[2.5rem] bg-cream-light border border-navy/5 transition-all duration-500 hover:bg-navy hover:-translate-y-1 hover:shadow-card-hover overflow-hidden flex flex-col justify-center cursor-pointer">
+                <div className="h-full relative group p-8 sm:p-12 rounded-md bg-cream-light border border-navy/5 transition-all duration-500 hover:bg-navy hover:-translate-y-1 hover:shadow-card-hover overflow-hidden flex flex-col justify-center cursor-pointer">
                   {/* Decorative hover background blob */}
                   <div className="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-navy/5 transition-transform duration-700 group-hover:scale-[3.5] group-hover:bg-white/5 pointer-events-none" />
                   <div className="relative z-10">
@@ -216,8 +197,8 @@ export function AboutSection() {
             {/* Mission 1 */}
             <div className="md:col-span-2 lg:col-span-2 lg:row-span-1">
               <FadeUp delay={0.1} className="h-full">
-                <div className="h-full group p-8 sm:p-10 rounded-[2.5rem] bg-white border border-navy/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-500 hover:shadow-xl hover:-translate-y-1 relative overflow-hidden flex flex-col sm:flex-row items-start sm:items-center gap-6">
-                  <div className="absolute inset-0 bg-gradient-to-br from-cream/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none" />
+                <div className="h-full group p-8 sm:p-10 rounded-md bg-white border border-navy/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-500 hover:shadow-xl hover:-translate-y-1 relative overflow-hidden flex flex-col sm:flex-row items-start sm:items-center gap-6">
+                  <div className="absolute inset-0 bg-linear-to-br from-cream/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none" />
                   <div className="relative z-10 shrink-0 p-5 rounded-3xl bg-cream-light text-navy transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6">
                     <Paintbrush2 className="h-8 w-8" strokeWidth={1.5} />
                   </div>
@@ -236,8 +217,8 @@ export function AboutSection() {
             {/* Mission 2 */}
             <div className="md:col-span-1 lg:col-span-1 lg:row-span-1">
               <FadeUp delay={0.2} className="h-full">
-                <div className="h-full group p-8 rounded-[2.5rem] bg-white border border-navy/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-500 hover:shadow-xl hover:-translate-y-1 relative overflow-hidden flex flex-col">
-                  <div className="absolute inset-0 bg-gradient-to-br from-cream/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none" />
+                <div className="h-full group p-8 rounded-md bg-white border border-navy/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-500 hover:shadow-xl hover:-translate-y-1 relative overflow-hidden flex flex-col">
+                  <div className="absolute inset-0 bg-linear-to-br from-cream/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none" />
                   <div className="relative z-10 mb-6 w-fit p-4 rounded-2xl bg-cream-light text-navy transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6">
                     <ShieldCheck className="h-6 w-6" strokeWidth={1.5} />
                   </div>
@@ -256,8 +237,8 @@ export function AboutSection() {
             {/* Mission 3 */}
             <div className="md:col-span-1 lg:col-span-1 lg:row-span-1">
               <FadeUp delay={0.3} className="h-full">
-                <div className="h-full group p-8 rounded-[2.5rem] bg-white border border-navy/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-500 hover:shadow-xl hover:-translate-y-1 relative overflow-hidden flex flex-col">
-                  <div className="absolute inset-0 bg-gradient-to-br from-cream/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none" />
+                <div className="h-full group p-8 rounded-md bg-white border border-navy/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-500 hover:shadow-xl hover:-translate-y-1 relative overflow-hidden flex flex-col">
+                  <div className="absolute inset-0 bg-linear-to-br from-cream/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none" />
                   <div className="relative z-10 mb-6 w-fit p-4 rounded-2xl bg-cream-light text-navy transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6">
                     <HandHeart className="h-6 w-6" strokeWidth={1.5} />
                   </div>
@@ -281,7 +262,7 @@ export function AboutSection() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <FadeUp>
             <div className="max-w-2xl">
-              <SectionLabel no="03" title="WHY US" />
+
               <p className="font-serif text-3xl md:text-4xl leading-snug text-navy">
                 Souvenir terbaik dimulai dari sini
               </p>
@@ -300,7 +281,7 @@ export function AboutSection() {
                   <div className="group h-full bg-white p-10 transition-all duration-500 hover:bg-navy hover:text-white cursor-pointer relative overflow-hidden">
                     {/* Decorative hover background blob */}
                     <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-navy/5 transition-transform duration-700 group-hover:scale-[2.5] group-hover:bg-white/5" />
-                    
+
                     <div className="relative z-10 flex items-center justify-between">
                       <Icon className="h-8 w-8 text-navy/30 transition-colors duration-500 group-hover:text-white/80" strokeWidth={1.5} />
                       <span className="font-mono text-sm font-bold text-navy/20 transition-colors duration-500 group-hover:text-white/20">{r.no}</span>

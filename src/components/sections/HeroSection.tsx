@@ -4,7 +4,7 @@ import { useRef, useEffect } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { Sparkles, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { buildWhatsAppLink } from "@/utils/whatsapp";
 
 if (typeof window !== "undefined") {
@@ -52,12 +52,7 @@ export function HeroSection() {
           {/* Left Content */}
           <div className="space-y-8 z-10">
             <div className="animate-item space-y-3">
-              <div className="flex items-center gap-2 w-fit">
-                <Sparkles size={20} className="text-white/70" />
-                <p className="font-medium text-sm tracking-wider uppercase text-white/50">
-                  Studio Kreatif Souvenir & Merchandise
-                </p>
-              </div>
+             
               <h1 className="font-serif text-5xl md:text-6xl font-medium text-white leading-[1.12] text-balance">
                 Desain Eksklusif untuk Setiap Momen
               </h1>
@@ -102,13 +97,13 @@ export function HeroSection() {
           </div>
 
           {/* Right Visual with Image and Shadow Effect */}
-          <div className="animate-item relative h-96 md:h-[450px] lg:h-[480px] flex items-center lg:items-start justify-center mt-12 lg:-mt-12">
+          <div className="animate-item relative h-96 md:h-[450px] lg:h-[480px] flex items-center lg:items-start justify-center mt-16 lg:mt-8">
             {/* Glow effects */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-white/5 rounded-full blur-3xl -z-10"></div>
             <div className="absolute -left-10 top-1/4 w-60 h-60 bg-cream/10 rounded-full blur-3xl -z-10"></div>
 
-            {/* Main Image Container - Photocard Style */}
-            <div className="relative w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] md:w-[400px] md:h-[400px] lg:w-[450px] lg:h-[450px] rotate-3 bg-white p-3 md:p-5 pb-12 md:pb-16 rounded-xl shadow-2xl shadow-black/50 transition-transform hover:rotate-0 duration-500 z-10">
+            <div className="animate-float z-10">
+              <div className="relative w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] md:w-[400px] md:h-[400px] lg:w-[450px] lg:h-[450px] rotate-6 bg-white p-3 md:p-5 pb-12 md:pb-16 rounded-xl shadow-2xl shadow-black/50 transition-all duration-500 hover:rotate-0 hover:scale-[1.03] hover:-translate-y-2 hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)] cursor-pointer">
               <div className="relative w-full h-full overflow-hidden rounded-sm bg-navy/5">
                 <Image
                   src="/image/hero/Hero.webp"
@@ -119,13 +114,14 @@ export function HeroSection() {
                   priority
                 />
               </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Decorative bottom gradient */}
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-navy-mid rounded-full blur-3xl opacity-30 -z-10"></div>
+      <div className="absolute top-1/2 right-0 w-96 h-96 bg-navy-mid rounded-full blur-3xl opacity-30 -z-10"></div>
       </section>
       <div className="w-full bg-cream-light -mt-1 relative z-20 pointer-events-none leading-none">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full h-auto block">

@@ -17,6 +17,18 @@
   /* ── Shadow ── */
   --shadow-card: 0 4px 24px -4px rgba(15,23,42,0.10);
   --shadow-card-hover: 0 16px 48px -8px rgba(15,23,42,0.18);
+
+  /* ── Animation ── */
+  --animate-float: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
 }
 
 /* ── Base ── */
@@ -40,6 +52,11 @@ body {
    Elements animated in by JS start hidden (.opacity-0 / GSAP). If the user
    prefers reduced motion, or scripting is unavailable, force them visible so
    content never stays blank (anti-FOUC, SEO/a11y safe). */
+.animate-item,
+.reveal-fade {
+  opacity: 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-item,
   .reveal-fade {
@@ -48,6 +65,7 @@ body {
   }
 }
 @media (scripting: none) {
+  .animate-item,
   .reveal-fade {
     opacity: 1 !important;
     transform: none !important;
