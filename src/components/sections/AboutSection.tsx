@@ -177,10 +177,7 @@ export function AboutSection() {
                   {/* Decorative hover background blob */}
                   <div className="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-navy/5 transition-transform duration-700 group-hover:scale-[3.5] group-hover:bg-white/5 pointer-events-none" />
                   <div className="relative z-10">
-                    <div className="mb-8 inline-flex items-center gap-3 p-2.5 pr-5 rounded-full bg-white shadow-sm border border-navy/5 transition-colors duration-500 group-hover:bg-white/10 group-hover:border-white/10">
-                      <div className="p-2 rounded-full bg-cream text-navy transition-colors duration-500 group-hover:bg-white/20 group-hover:text-white">
-                        <Zap className="h-4 w-4" />
-                      </div>
+                    <div className="mb-8 inline-flex items-center gap-3 p-2.5 pr-5 rounded-full justify-center bg-white shadow-sm border border-navy/5 transition-colors duration-500 group-hover:bg-white/10 group-hover:border-white/10">
                       <span className="text-xs font-bold uppercase tracking-[0.15em] text-navy/60 transition-colors duration-500 group-hover:text-white/80">
                         Visi Utama
                       </span>
