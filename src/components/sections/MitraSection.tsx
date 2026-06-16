@@ -20,7 +20,7 @@ const HALF = [
 
 function LogoItem({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="group relative flex-shrink-0 w-32 h-14">
+    <div className="group relative shrink-0 w-32 h-14">
       <Image
         src={src}
         alt={alt}
@@ -54,12 +54,12 @@ export function MitraSection() {
         {/* Fade — left edge */}
         <div
           aria-hidden
-          className="pointer-events-none absolute left-0 top-0 bottom-0 w-28 z-10 bg-gradient-to-r from-white to-transparent"
+          className="pointer-events-none absolute left-0 top-0 bottom-0 w-28 z-10 bg-linear-to-r from-white to-transparent"
         />
         {/* Fade — right edge */}
         <div
           aria-hidden
-          className="pointer-events-none absolute right-0 top-0 bottom-0 w-28 z-10 bg-gradient-to-l from-white to-transparent"
+          className="pointer-events-none absolute right-0 top-0 bottom-0 w-28 z-10 bg-linear-to-l from-white to-transparent"
         />
 
         <div className="animate-marquee flex items-center gap-16 w-max py-1">
