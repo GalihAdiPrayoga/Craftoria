@@ -26,7 +26,7 @@ function LogoItem({ src, alt }: { src: string; alt: string }) {
         alt={alt}
         fill
         sizes="128px"
-        className="object-contain grayscale opacity-30 transition-all duration-500 ease-out group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105"
+        className="object-contain grayscale opacity-50 transition-all duration-500 ease-out group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105"
       />
     </div>
   );
@@ -36,7 +36,7 @@ export function MitraSection() {
   const eyebrowRef = useReveal(0);
 
   return (
-    <section className="relative z-20 bg-white py-10 sm:py-14">
+    <section className="relative z-20 bg-white pt-2 pb-10 sm:pt-4 sm:pb-14">
       {/* ── Eyebrow label ── */}
       <div
         ref={eyebrowRef}
