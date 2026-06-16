@@ -60,16 +60,18 @@ export function GallerySection() {
   };
 
   return (
-    <section id="gallery" className="relative z-20 scroll-mt-0 bg-white pt-24 pb-16 lg:pt-32 lg:pb-24 border-t border-navy/5">
+    <section id="gallery" className="relative z-20 scroll-mt-20 bg-white pt-24 pb-16 lg:pt-32 lg:pb-24 border-t border-navy/5">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         {/* Heading */}
-        <div ref={headingRef} className="reveal-fade mx-auto max-w-2xl text-center opacity-0">
-          <p className="font-serif text-3xl md:text-4xl leading-snug text-navy">
-            Koleksi Karya Kami
-          </p>
-          <p className="mt-5 text-base leading-relaxed text-navy/60 font-sans">
-            Hasil nyata souvenir &amp; merchandise custom Craftoria. Klik foto untuk memperbesar.
-          </p>
+        <div ref={headingRef} className="reveal-fade opacity-0">
+          <div className="grid gap-8 lg:grid-cols-2 lg:items-end">
+            <p className="font-display text-4xl sm:text-5xl font-semibold leading-[1.06] tracking-tight text-navy">
+              Koleksi Karya Kami
+            </p>
+            <p className="text-base leading-relaxed text-navy/50 font-sans lg:max-w-xs lg:ml-auto">
+              Hasil nyata souvenir &amp; merchandise custom Craftoria. Klik foto untuk memperbesar.
+            </p>
+          </div>
         </div>
 
         {/* Tabs */}

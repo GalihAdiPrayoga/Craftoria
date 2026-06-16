@@ -1,5 +1,5 @@
 import { site } from "@/data/site";
-import { MapPin, Phone, AtSign, ArrowUpRight } from "lucide-react";
+import { MapPin, Phone, ArrowUpRight } from "lucide-react";
 import { buildWhatsAppLink } from "@/utils/whatsapp";
 
 
@@ -114,7 +114,7 @@ export function Footer() {
               <p className="text-xs font-bold uppercase tracking-[0.18em] text-white/20">
                 Moto
               </p>
-              <p className="mt-5 font-serif text-sm italic leading-8 text-white/35">
+              <p className="mt-5 font-display text-sm leading-8 text-white/35">
                 &ldquo;Setiap acara layak dikenang lewat souvenir yang bermakna.&rdquo;
               </p>
             </div>

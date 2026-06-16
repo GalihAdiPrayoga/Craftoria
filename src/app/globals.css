@@ -12,7 +12,7 @@
 
   /* ── Typography ── */
   --font-sans: var(--font-open-sans);
-  --font-serif: var(--font-playfair);
+  --font-display: var(--font-geist);
 
   /* ── Shadow ── */
   --shadow-card: 0 4px 24px -4px rgba(15,23,42,0.10);

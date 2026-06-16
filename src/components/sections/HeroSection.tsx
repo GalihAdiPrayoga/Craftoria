@@ -43,14 +43,14 @@ export function HeroSection() {
       <section
         id="hero"
         ref={sectionRef}
-        className="relative flex min-h-[88vh] items-center overflow-hidden bg-navy pt-28 pb-16 lg:pb-20"
+        className="relative flex min-h-[88vh] items-center overflow-hidden bg-navy pt-24 sm:pt-28 pb-16 lg:pb-20"
       >
-        <div ref={contentRef} className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div ref={contentRef} className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             {/* Left Content */}
             <div className="space-y-8 z-10">
               <div className="animate-item space-y-3">
-                <h1 className="font-serif text-5xl md:text-6xl font-medium text-white leading-[1.12] text-balance">
+                <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-semibold text-white leading-[1.08] tracking-tight text-balance">
                   Desain Eksklusif untuk Setiap Momen
                 </h1>
               </div>
@@ -79,15 +79,15 @@ export function HeroSection() {
               </div>
 
               {/* Value props */}
-              <div className="animate-item grid grid-cols-3 gap-6 pt-8 border-t border-white/10">
+              <div className="animate-item grid grid-cols-3 gap-3 sm:gap-6 pt-8 border-t border-white/10">
                 {[
                   { label: "100% Custom", sub: "Desain milik Anda" },
                   { label: "Cetak Premium", sub: "Hasil bersih & tajam" },
                   { label: "Konsultasi Gratis", sub: "Dampingi dari ide" },
                 ].map((v) => (
                   <div key={v.label}>
-                    <p className="text-lg md:text-xl font-bold text-white leading-tight">{v.label}</p>
-                    <p className="text-sm text-white/50 mt-1">{v.sub}</p>
+                    <p className="font-display text-sm sm:text-base md:text-xl font-semibold text-white leading-tight">{v.label}</p>
+                    <p className="text-xs sm:text-sm text-white/50 mt-1">{v.sub}</p>
                   </div>
                 ))}
               </div>

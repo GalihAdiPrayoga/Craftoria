@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Open_Sans, Playfair_Display } from "next/font/google";
+import { Open_Sans, Geist } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/organisms/Navbar";
 import { Footer } from "@/components/organisms/Footer";
@@ -12,10 +12,10 @@ const openSans = Open_Sans({
   display: "swap",
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const geist = Geist({
+  variable: "--font-geist",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: "variable",
   display: "swap",
 });
 
@@ -38,7 +38,7 @@ export default function RootLayout({
   return (
     <html
       lang="id"
-      className={`${openSans.variable} ${playfair.variable} h-full antialiased`}
+      className={`${openSans.variable} ${geist.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-white font-sans text-navy">
         <Navbar />

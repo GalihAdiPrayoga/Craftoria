@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
 type HeadingLevel = "h1" | "h2" | "h3" | "h4";
-type HeadingVariant = "serif" | "sans";
+type HeadingVariant = "display" | "sans";
 
 type HeadingProps = {
   level?: HeadingLevel;
@@ -19,12 +19,12 @@ const levelStyles: Record<HeadingLevel, string> = {
 
 /**
  * ATOM — Heading
- * Tipografi global. variant="serif" → Playfair Display editorial.
- * variant="sans" → Open Sans (default body weight).
+ * variant="display" → Geist (neo-grotesque, default heading).
+ * variant="sans" → Open Sans (body weight).
  */
 export function Heading({
   level = "h2",
-  variant = "serif",
+  variant = "display",
   children,
   className,
 }: HeadingProps) {
@@ -34,7 +34,7 @@ export function Heading({
     <Tag
       className={cn(
         levelStyles[level],
-        variant === "serif" ? "font-serif" : "font-sans",
+        variant === "display" ? "font-display" : "font-sans",
         className
       )}
     >

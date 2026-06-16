@@ -67,6 +67,7 @@ Satu commit = satu perubahan logis, scope sempit.
 | Linting | ESLint 9 (`eslint-config-next`) |
 | Package Manager | npm |
 | Import alias | `@/*` → `src/*` |
+| Font | Open Sans (body, `--font-sans`) + **Geist** (display/heading, `--font-display`) via `next/font/google` |
 | Database / ORM | > belum ditentukan |
 | Auth | > belum ditentukan |
 | Storage | > belum ditentukan |
@@ -111,6 +112,7 @@ src/
 | Sprint 00 | Setup & Infrastructure | ✅ Done — landing page Craftoria.co selesai 2026-06-12 |
 | Gallery Refine | Katalog → Gallery + polish + deploy-ready | ✅ Done 2026-06-13 — build production hijau |
 | UI Polish v2 | Hero serif, diagonal divider, navbar kontras, anti-FOUC | ✅ Done 2026-06-15 — validated & build success |
+| Font + About Redesign | Playfair → Geist, About editorial bersih, responsif penuh | ✅ Done 2026-06-16 — semua font-serif dimitrasi, About 3-sub-section ditulis ulang |
 
 ---
 
@@ -120,6 +122,7 @@ src/
 
 - **Landing Page Profil ✅ (2026-06-12):** single-page statik (Hero, Tentang, Visi & Misi, Kenapa Kami, 3 kategori produk, Kontak) dengan CTA WhatsApp floating + kontekstual, Navbar sticky blur, dan Footer.
 - **Gallery Produk ✅ (2026-06-13):** section galeri image-forward (30 foto asli di `public/image/catalog/`) dengan filter kategori (Drinkware/Decor/Daily) + lightbox keyboard-accessible, menggantikan katalog teksual; Hero pakai value-props + CTA `#gallery`, Why-Us jadi grid kartu. Build production hijau via `npm run predeploy`.
+- **Font Modern + About Editorial ✅ (2026-06-16):** ganti Playfair Display → **Geist** (neo-grotesque, token `--font-display`/utility `font-display`); About section ditulis ulang 3 sub-section (Tentang, Visi-Misi, Kenapa Kami) gaya editorial bersih — hapus watermark/blob/glassmorphism/gradient-italic; responsif diperbaiki 320px–ultrawide.
 
 ---
 
