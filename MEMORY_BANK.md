@@ -119,6 +119,12 @@ Fungsi: buildWhatsAppLink(categoryTitle?: string)
 
 ## Recent Changes
 
+### 2026-06-16 — Antigravity (Gemini)
+
+**UI & Transition Fix** ✅ — fix(ui): synchronize wave transition color between Hero and About sections
+- `AboutSection.tsx`: Ubah warna SVG path wave menggunakan class Tailwind `className="fill-navy"` agar selalu sinkron dengan variabel `--color-navy`.
+- `HeroSection.tsx`: Naikkan posisi decorative bottom gradient dari `top-1/2` menjadi `top-1/4` agar efek *blur* tidak bocor ke ujung bawah section yang menyebabkan perbedaan warna dengan wave.
+
 ### 2026-06-15 — Claude Code (UI Polish v2)
 
 **UI Polish v2 finalized** ✅ — feat(ui): hero serif, diagonal dividers, navbar contrast fix, anti-FOUC

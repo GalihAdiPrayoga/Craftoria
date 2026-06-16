@@ -89,12 +89,25 @@ export function AboutSection() {
   return (
     <>
       {/* ── Tentang Kami ── */}
-      <section id="about" className="relative z-20 scroll-mt-0 overflow-hidden bg-cream-light py-24 lg:py-32">
-        {/* Decorative Blobs */}
-        <div className="pointer-events-none absolute top-[-10%] right-[-5%] h-[500px] w-[500px] rounded-full bg-cream/60 blur-[100px]" />
-        <div className="pointer-events-none absolute top-[40%] left-[-10%] h-[400px] w-[400px] rounded-full bg-white/80 blur-[80px]" />
+      <section id="about" className="relative z-20 scroll-mt-0 overflow-hidden bg-white -mt-1">
+        {/* ── KUNCI TRANSISI WAVE DI SINI ── */}
+        {/* Wave dipindah ke AboutSection agar blob background bisa menyatu (tidak ada garis putih keras) */}
+        <div className="w-full relative z-30 pointer-events-none leading-none">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full h-auto block">
+            <path
+              className="fill-navy"
+              fillOpacity="1"
+              d="M0,160L30,133.3C60,107,120,53,180,64C240,75,300,149,360,170.7C420,192,480,160,540,170.7C600,181,660,235,720,256C780,277,840,267,900,245.3C960,224,1020,192,1080,192C1140,192,1200,224,1260,224C1320,224,1380,192,1410,176L1440,160L1440,0L1410,0C1380,0,1320,0,1260,0C1200,0,1140,0,1080,0C1020,0,960,0,900,0C840,0,780,0,720,0C660,0,600,0,540,0C480,0,420,0,360,0C300,0,240,0,180,0C120,0,60,0,30,0L0,0Z"
+            ></path>
+          </svg>
+        </div>
 
-        <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+        {/* Decorative Blobs */}
+        <div className="pointer-events-none absolute top-[-5%] right-[-5%] h-[500px] w-[500px] rounded-full bg-cream/60 blur-[100px] z-0" />
+        <div className="pointer-events-none absolute top-[40%] left-[-10%] h-[400px] w-[400px] rounded-full bg-white/80 blur-[80px] z-0" />
+
+        <div className="relative z-10 py-24 lg:py-32">
+          <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-8 items-start">
             <div className="lg:col-span-5 relative">
               {/* Big Watermark Text */}
@@ -154,6 +167,7 @@ export function AboutSection() {
               })}
             </div>
           </FadeUp>
+        </div>
         </div>
       </section>
 
