@@ -125,6 +125,10 @@ Fungsi: buildWhatsAppLink(categoryTitle?: string)
 - `AboutSection.tsx`: Ubah warna SVG path wave menggunakan class Tailwind `className="fill-navy"` agar selalu sinkron dengan variabel `--color-navy`.
 - `HeroSection.tsx`: Naikkan posisi decorative bottom gradient dari `top-1/2` menjadi `top-1/4` agar efek *blur* tidak bocor ke ujung bawah section yang menyebabkan perbedaan warna dengan wave.
 
+**Layout Spacing & Mitra Logo Polish** `31b58f6` — fix(ui): adjust layout spacing and mitra logo opacity
+- `MitraSection.tsx`: Naikkan opacity logo dari `opacity-30` ke `opacity-50` agar lebih terlihat; kurangi padding vertikal atas.
+- `GallerySection.tsx`: Kurangi padding bottom agar jarak whitespace ke area Mitra lebih proporsional dan tidak terkesan kosong.
+
 ### 2026-06-15 — Claude Code (UI Polish v2)
 
 **UI Polish v2 finalized** ✅ — feat(ui): hero serif, diagonal dividers, navbar contrast fix, anti-FOUC
