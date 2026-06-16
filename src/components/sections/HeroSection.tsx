@@ -45,7 +45,7 @@ export function HeroSection() {
         ref={sectionRef}
         className="relative flex min-h-[88vh] items-center overflow-hidden bg-navy pt-24 sm:pt-28 pb-16 lg:pb-20"
       >
-        <div ref={contentRef} className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div ref={contentRef} className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             {/* Left Content */}
             <div className="space-y-8 z-10">
@@ -86,7 +86,7 @@ export function HeroSection() {
                   { label: "Konsultasi Gratis", sub: "Dampingi dari ide" },
                 ].map((v) => (
                   <div key={v.label}>
-                    <p className="font-display text-sm sm:text-base md:text-xl font-semibold text-white leading-tight">{v.label}</p>
+                    <p className="font-display text-sm sm:text-base font-semibold text-white leading-tight">{v.label}</p>
                     <p className="text-xs sm:text-sm text-white/50 mt-1">{v.sub}</p>
                   </div>
                 ))}

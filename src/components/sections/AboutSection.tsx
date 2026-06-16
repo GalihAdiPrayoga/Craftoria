@@ -101,8 +101,7 @@ const reasons = [
 function AboutIntro() {
   return (
     <section
-      id="about"
-      className="relative z-20 scroll-mt-20 overflow-hidden bg-white -mt-1"
+      className="relative z-20 overflow-hidden bg-white -mt-1"
     >
       {/* Wave transisi navy→putih — JANGAN UBAH (commit abcbfd6) */}
       <div className="w-full relative z-30 pointer-events-none leading-none">
@@ -120,6 +119,8 @@ function AboutIntro() {
       </div>
 
       <div className="relative z-10 py-20 sm:py-24 lg:py-32">
+        {/* Anchor tepat di heading — id di sini agar scroll mendarat di judul */}
+        <div id="about" className="scroll-mt-24" />
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
 
           {/* Heading + body */}
@@ -134,7 +135,7 @@ function AboutIntro() {
 
             <div className="lg:col-span-6 lg:col-start-7">
               <FadeUp delay={0.1}>
-                <p className="text-base sm:text-lg leading-relaxed text-navy/65 font-sans">
+                <p className="text-base sm:text-lg leading-relaxed text-navy/60 font-sans">
                   Craftoria.co hadir sebagai mitra terpercaya untuk mewujudkan
                   kebutuhan souvenir, kado personal, hingga merchandise event yang{" "}
                   <strong className="text-navy font-medium">
@@ -193,9 +194,10 @@ function AboutIntro() {
 function VisionMission() {
   return (
     <section
-      id="vision-mission"
-      className="relative z-20 scroll-mt-20 bg-white py-20 sm:py-24 lg:py-32 border-t border-navy/5"
+      className="relative z-20 bg-white py-20 sm:py-24 lg:py-32 border-t border-navy/5"
     >
+      {/* Anchor tepat di heading — id di sini agar scroll mendarat di judul */}
+      <div id="vision-mission" className="scroll-mt-24" />
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         {/* Eyebrow + heading row */}
         <FadeUp>
@@ -269,9 +271,10 @@ function VisionMission() {
 function WhyUs() {
   return (
     <section
-      id="why-us"
-      className="relative z-20 scroll-mt-20 bg-cream-light py-20 sm:py-24 lg:py-32"
+      className="relative z-20 bg-cream-light py-20 sm:py-24 lg:py-32"
     >
+      {/* Anchor tepat di heading — id di sini agar scroll mendarat di judul */}
+      <div id="why-us" className="scroll-mt-24" />
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         {/* Eyebrow + heading */}
         <FadeUp>
