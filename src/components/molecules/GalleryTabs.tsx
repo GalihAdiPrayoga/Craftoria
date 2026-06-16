@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 import { galleryCategories, type GalleryCategory } from "@/data/gallery";
 
 export type GalleryFilter = "all" | GalleryCategory;
@@ -18,6 +19,7 @@ type GalleryTabsProps = {
 /**
  * MOLECULE — GalleryTabs
  * Filter kategori untuk GallerySection. Horizontal-scroll di mobile.
+ * Active tab menggunakan Framer Motion `layoutId` untuk sliding pill indicator.
  */
 export function GalleryTabs({ active, onChange }: GalleryTabsProps) {
   return (
@@ -31,14 +33,23 @@ export function GalleryTabs({ active, onChange }: GalleryTabsProps) {
             aria-pressed={isActive}
             onClick={() => onChange(t.id)}
             className={cn(
-              "whitespace-nowrap rounded-full px-5 py-2 text-sm font-semibold transition-colors duration-200",
+              "relative whitespace-nowrap rounded-full px-5 py-2 text-sm font-semibold",
+              "transition-colors duration-200",
               "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy",
               isActive
-                ? "bg-navy text-white"
+                ? "text-white"
                 : "bg-navy/5 text-navy/60 hover:bg-navy/10 hover:text-navy"
             )}
           >
-            {t.label}
+            {/* Sliding pill background */}
+            {isActive && (
+              <motion.span
+                layoutId="gallery-tab-pill"
+                className="absolute inset-0 bg-navy rounded-full"
+                transition={{ type: "spring", stiffness: 400, damping: 38 }}
+              />
+            )}
+            <span className="relative z-10">{t.label}</span>
           </button>
         );
       })}

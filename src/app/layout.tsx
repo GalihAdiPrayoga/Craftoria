@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/organisms/Navbar";
 import { Footer } from "@/components/organisms/Footer";
 import { FloatingWhatsApp } from "@/components/organisms/FloatingWhatsApp";
+import { ScrollProgressBar } from "@/components/atoms/ScrollProgressBar";
 
 const openSans = Open_Sans({
   variable: "--font-open-sans",
@@ -41,6 +42,7 @@ export default function RootLayout({
       className={`${openSans.variable} ${geist.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-white font-sans text-navy">
+        <ScrollProgressBar />
         <Navbar />
         <main>{children}</main>
         <Footer />

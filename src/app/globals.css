@@ -19,7 +19,8 @@
   --shadow-card-hover: 0 16px 48px -8px rgba(15,23,42,0.18);
 
   /* ── Animation ── */
-  --animate-float: float 6s ease-in-out infinite;
+  --animate-float:   float   6s  ease-in-out infinite;
+  --animate-marquee: marquee 58s linear     infinite;
 }
 
 @keyframes float {
@@ -29,6 +30,16 @@
   50% {
     transform: translateY(-20px);
   }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Pause marquee on container hover */
+.marquee-container:hover .animate-marquee {
+  animation-play-state: paused;
 }
 
 /* ── Base ── */
@@ -70,4 +81,58 @@ body {
     opacity: 1 !important;
     transform: none !important;
   }
+}
+
+/* ── Animated hero background orbs ──
+   Three blobs that slowly drift/morph in the hero background.
+   Durations are prime-ish numbers to avoid sync and create organic feel. */
+@keyframes orb-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(52px, -40px) scale(1.14); }
+  66%       { transform: translate(-28px, 28px) scale(0.9); }
+}
+@keyframes orb-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(-60px, 48px) scale(1.2); }
+}
+@keyframes orb-drift-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  40%       { transform: translate(40px, 60px) scale(1.1); }
+  80%       { transform: translate(-52px, -28px) scale(0.86); }
+}
+
+.animate-orb-1 { animation: orb-drift-1 9s  ease-in-out infinite; }
+.animate-orb-2 { animation: orb-drift-2 13s ease-in-out infinite; }
+.animate-orb-3 { animation: orb-drift-3 17s ease-in-out infinite; }
+
+/* ── Card shimmer sweep ──
+   A single-pass light sweep on hover (WhyUs cards, feature cards).
+   Add class "card-shimmer" to the interactive wrapper. */
+@keyframes shimmer-sweep {
+  from { background-position: -200% center; }
+  to   { background-position:  200% center; }
+}
+
+.card-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.card-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.07) 50%,
+    transparent 60%
+  );
+  background-size: 200% 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+}
+.card-shimmer:hover::after {
+  opacity: 1;
+  animation: shimmer-sweep 0.75s ease-in-out forwards;
 }

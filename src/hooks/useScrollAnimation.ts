@@ -136,3 +136,38 @@ export function useColumnReveal(selector: string) {
 
   return containerRef;
 }
+
+/**
+ * More dramatic reveal: fade-up with a subtle skewY twist.
+ * Use for section headings to create a premium "emergence" feel.
+ * Animates: opacity 0→1 · y 48→0 · skewY 2→0
+ */
+export function useReveal(delay = 0) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!ref.current) return;
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ref.current,
+        { opacity: 0, y: 48, skewY: 2 },
+        {
+          opacity: 1,
+          y: 0,
+          skewY: 0,
+          duration: 0.9,
+          delay,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ref.current,
+            start: "top 88%",
+            once: true,
+          },
+        }
+      );
+    }, ref);
+    return () => ctx.revert();
+  }, [delay]);
+
+  return ref;
+}

@@ -29,12 +29,55 @@ function FadeUp({
         {
           opacity: 1,
           y: 0,
-          duration: 0.65,
+          duration: 0.7,
           delay,
           ease: "power2.out",
           scrollTrigger: {
             trigger: ref.current,
             start: "top 87%",
+            once: true,
+          },
+        }
+      );
+    }, ref);
+    return () => ctx.revert();
+  }, [delay]);
+
+  return (
+    <div ref={ref} className={`reveal-fade opacity-0 ${className ?? ""}`}>
+      {children}
+    </div>
+  );
+}
+
+/* ── Reveal — premium heading reveal (fade + translate + skewY) ── */
+function Reveal({
+  children,
+  delay = 0,
+  className,
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!ref.current) return;
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ref.current,
+        { opacity: 0, y: 48, skewY: 2 },
+        {
+          opacity: 1,
+          y: 0,
+          skewY: 0,
+          duration: 0.9,
+          delay,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ref.current,
+            start: "top 88%",
             once: true,
           },
         }
@@ -126,11 +169,11 @@ function AboutIntro() {
           {/* Heading + body */}
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-8 items-start">
             <div className="lg:col-span-5">
-              <FadeUp>
+              <Reveal>
                 <h2 className="font-display text-4xl sm:text-5xl font-semibold leading-[1.06] tracking-tight text-navy">
                   Studio kreatif souvenir &amp; merchandise
                 </h2>
-              </FadeUp>
+              </Reveal>
             </div>
 
             <div className="lg:col-span-6 lg:col-start-7">
@@ -164,7 +207,7 @@ function AboutIntro() {
                 return (
                   <div
                     key={f.label}
-                    className="group flex flex-col gap-5 p-7 rounded-xl border border-navy/10 bg-white transition-all duration-300 hover:border-navy/25 hover:-translate-y-1 hover:shadow-[0_8px_24px_-8px_rgba(15,23,42,0.12)] cursor-pointer"
+                    className="card-shimmer group flex flex-col gap-5 p-7 rounded-xl border border-navy/10 bg-white transition-all duration-300 hover:border-navy/25 hover:-translate-y-1 hover:shadow-[0_8px_24px_-8px_rgba(15,23,42,0.12)] cursor-pointer"
                   >
                     <div className="p-2.5 w-fit rounded-lg bg-cream-light text-navy/55 transition-colors duration-300 group-hover:bg-navy group-hover:text-white">
                       <Icon className="h-5 w-5" strokeWidth={1.5} />
@@ -200,7 +243,7 @@ function VisionMission() {
       <div id="vision-mission" className="scroll-mt-24" />
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         {/* Eyebrow + heading row */}
-        <FadeUp>
+        <Reveal>
           <div className="grid gap-8 lg:grid-cols-2 lg:items-end">
             <h2 className="font-display text-4xl sm:text-5xl font-semibold leading-[1.06] tracking-tight text-navy">
               Arah &amp; komitmen kreatif kami
@@ -210,7 +253,7 @@ function VisionMission() {
               berkarya dan melayani.
             </p>
           </div>
-        </FadeUp>
+        </Reveal>
 
         {/* Visi — navy solid, tanpa blob */}
         <FadeUp delay={0.1} className="mt-10 sm:mt-12">
@@ -238,7 +281,7 @@ function VisionMission() {
             const Icon = m.icon;
             return (
               <FadeUp key={m.title} delay={0.08 * (i + 1)}>
-                <div className="group flex flex-col gap-5 p-7 rounded-xl border border-navy/10 bg-cream-light/40 transition-all duration-300 hover:border-navy/20 hover:bg-white hover:-translate-y-1 hover:shadow-[0_8px_24px_-8px_rgba(15,23,42,0.10)]">
+                <div className="card-shimmer group flex flex-col gap-5 p-7 rounded-xl border border-navy/10 bg-cream-light/40 transition-all duration-300 hover:border-navy/20 hover:bg-white hover:-translate-y-1 hover:shadow-[0_8px_24px_-8px_rgba(15,23,42,0.10)]">
                   <div className="flex items-center justify-between">
                     <div className="p-2.5 w-fit rounded-lg bg-white text-navy/50 border border-navy/8">
                       <Icon className="h-5 w-5" strokeWidth={1.5} />
@@ -277,7 +320,7 @@ function WhyUs() {
       <div id="why-us" className="scroll-mt-24" />
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         {/* Eyebrow + heading */}
-        <FadeUp>
+        <Reveal>
           <div className="grid gap-8 lg:grid-cols-2 lg:items-end">
             <h2 className="font-display text-4xl sm:text-5xl font-semibold leading-[1.06] tracking-tight text-navy">
               Souvenir terbaik dimulai dari sini
@@ -287,7 +330,7 @@ function WhyUs() {
               hingga produk eksklusif siap melengkapi momen berharga Anda.
             </p>
           </div>
-        </FadeUp>
+        </Reveal>
 
         {/* 3 kartu — hover navy dipertahankan, blob dihapus */}
         <div className="mt-10 sm:mt-12 grid grid-cols-1 gap-px bg-navy/8 overflow-hidden rounded-2xl border border-navy/8 sm:grid-cols-3">
@@ -295,7 +338,7 @@ function WhyUs() {
             const Icon = r.icon;
             return (
               <FadeUp key={r.title} delay={0.08 * i} className="bg-cream-light">
-                <div className="group h-full bg-white p-9 sm:p-10 transition-colors duration-300 hover:bg-navy cursor-pointer">
+                <div className="card-shimmer group h-full bg-white p-9 sm:p-10 transition-colors duration-300 hover:bg-navy cursor-pointer">
                   <div className="flex items-start justify-between">
                     <Icon
                       className="h-7 w-7 text-navy/25 transition-colors duration-300 group-hover:text-white/60"

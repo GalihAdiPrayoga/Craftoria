@@ -15,6 +15,7 @@ import { cn } from "@/lib/utils";
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("");
 
   useEffect(() => {
     const hero = document.getElementById("hero");
@@ -42,6 +43,30 @@ export function Navbar() {
     document.body.style.overflow = open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [open]);
+
+  /* ── Scroll spy: highlight the nav item whose section is in view ── */
+  useEffect(() => {
+    const ids = navItems.map((item) => item.href.replace("#", ""));
+
+    const update = () => {
+      // Walk from bottom → top, set active to the last section whose top
+      // has crossed the midpoint of the viewport.
+      const mid = window.scrollY + window.innerHeight * 0.4;
+      let found = "";
+      for (let i = ids.length - 1; i >= 0; i--) {
+        const el = document.getElementById(ids[i]);
+        if (el) {
+          const top = el.getBoundingClientRect().top + window.scrollY;
+          if (top <= mid) { found = navItems[i].href; break; }
+        }
+      }
+      setActiveSection(found);
+    };
+
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, []);
 
   return (
     <header
@@ -83,7 +108,13 @@ export function Navbar() {
         <ul className="hidden items-center gap-10 md:flex">
           {navItems.map((item) => (
             <li key={item.href}>
-              <NavLink href={item.href} scrolled={scrolled}>{item.label}</NavLink>
+              <NavLink
+                href={item.href}
+                scrolled={scrolled}
+                isActive={activeSection === item.href}
+              >
+                {item.label}
+              </NavLink>
             </li>
           ))}
         </ul>

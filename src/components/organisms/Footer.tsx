@@ -1,5 +1,6 @@
 import { site } from "@/data/site";
-import { MapPin, Phone, ArrowUpRight } from "lucide-react";
+import { MapPin, ArrowUpRight } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { buildWhatsAppLink } from "@/utils/whatsapp";
 
 
@@ -56,7 +57,7 @@ export function Footer() {
               </p>
               <ul className="mt-6 space-y-2.5 text-sm text-white/50">
                 <li className="flex items-center gap-2.5">
-                  <Phone className="h-4 w-4 shrink-0 text-white/20" strokeWidth={1.5} />
+                  <FaWhatsapp className="h-4 w-4 shrink-0 text-whatsapp/60" />
                   <a href={buildWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300">
                     {site.phoneDisplay}
                   </a>
