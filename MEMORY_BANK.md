@@ -126,8 +126,8 @@ Fungsi: buildWhatsAppLink(categoryTitle?: string)
 - `HeroSection.tsx`: Naikkan posisi decorative bottom gradient dari `top-1/2` menjadi `top-1/4` agar efek *blur* tidak bocor ke ujung bawah section yang menyebabkan perbedaan warna dengan wave.
 
 **Layout Spacing & Mitra Logo Polish** `31b58f6` — fix(ui): adjust layout spacing and mitra logo opacity
-- `MitraSection.tsx`: Naikkan opacity logo dari `opacity-30` ke `opacity-50` agar lebih terlihat; kurangi padding vertikal atas.
-- `GallerySection.tsx`: Kurangi padding bottom agar jarak whitespace ke area Mitra lebih proporsional dan tidak terkesan kosong.
+- `MitraSection.tsx`: Naikkan opacity logo dari `opacity-30` ke `opacity-50` agar lebih terlihat; kurangi padding vertikal atas. Menambahkan `priority={true}` pada gambar awal untuk mengatasi LCP warning.
+- `GallerySection.tsx`: Kurangi padding bottom agar jarak whitespace ke area Mitra lebih proporsional dan tidak terkesan kosong. Menambahkan `priority={true}` pada gambar awal untuk mengatasi LCP warning.
 
 ### 2026-06-15 — Claude Code (UI Polish v2)
 

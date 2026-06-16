@@ -112,6 +112,7 @@ export function GallerySection() {
                     height={800}
                     sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    priority={i < 4}
                   />
                 </button>
               );

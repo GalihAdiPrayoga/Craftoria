@@ -18,7 +18,7 @@ const HALF = [
   ...mitraImages,
 ];
 
-function LogoItem({ src, alt }: { src: string; alt: string }) {
+function LogoItem({ src, alt, priority }: { src: string; alt: string; priority?: boolean }) {
   return (
     <div className="group relative shrink-0 w-32 h-14">
       <Image
@@ -26,6 +26,7 @@ function LogoItem({ src, alt }: { src: string; alt: string }) {
         alt={alt}
         fill
         sizes="128px"
+        priority={priority}
         className="object-contain grayscale opacity-50 transition-all duration-500 ease-out group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105"
       />
     </div>
@@ -65,7 +66,7 @@ export function MitraSection() {
         <div className="animate-marquee flex items-center gap-16 w-max py-1">
           {/* Half A */}
           {HALF.map((m, i) => (
-            <LogoItem key={`a-${i}`} src={m.src} alt={m.alt} />
+            <LogoItem key={`a-${i}`} src={m.src} alt={m.alt} priority={i < 4} />
           ))}
           {/* Half B — identical, creates the seamless loop */}
           {HALF.map((m, i) => (
